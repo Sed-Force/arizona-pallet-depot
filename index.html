@@ -160,13 +160,10 @@
   <div class="container" style="max-width:760px">
     <h2>Request a Quote</h2>
 
-    <!-- ✅ REPLACE THE action URL BELOW WITH YOUR REAL FORMSPREE ENDPOINT -->
-    <form action="https://formspree.io/f/PASTE_FORMSPREE_ENDPOINT_HERE" method="POST">
-      <!-- Optional email subject you’ll receive -->
+    <!-- ✅ Live Formspree endpoint -->
+    <form action="https://formspree.io/f/xblkvywz" method="POST">
       <input type="hidden" name="_subject" value="New Quote Request — Arizona Pallet Depot">
-      <!-- Optional redirect after submit -->
       <input type="hidden" name="_redirect" value="https://arizonapalletdepot.com/thanks.html">
-      <!-- Since we removed the selector, pass this value through -->
       <input type="hidden" name="pallet_type" value="Plastic">
 
       <div class="grid2">
@@ -183,7 +180,6 @@
       </div>
       <textarea name="message" placeholder="Timing, specs, recurring needs, delivery notes, etc."></textarea>
 
-      <!-- Spam honeypot -->
       <input type="text" name="_gotcha" style="display:none">
 
       <button class="btn btn-primary" type="submit">Send Request</button>
