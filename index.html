@@ -1,43 +1,230 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arizona Pallet Depot | Phoenix Pallets – Buy & Pickup/Delivery</title>
-  <meta name="description" content="Arizona Pallet Depot supplies plastic and wood pallets in Phoenix and across the East Valley. Bulk pricing, fast pickup, and local delivery. Get a quote today." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arizona Pallet Depot | Phoenix Pallets – Buy & Pickup/Delivery</title>
+<meta name="description" content="Arizona Pallet Depot supplies plastic and wood pallets in Phoenix and across the East Valley. Bulk pricing, fast pickup, and local delivery. Get a quote today.">
+<meta property="og:title" content="Arizona Pallet Depot">
+<meta property="og:description" content="Plastic & wood pallets in Phoenix. Bulk discounts. Fast pickup or delivery.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arizonapalletdepot.com">
+<meta property="og:image" content="/pallet-1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts & Tailwind -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style> body{font-family:Inter,system-ui,Arial,sans-serif} </style>
+<!-- Local SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Arizona Pallet Depot",
+  "url": "https://arizonapalletdepot.com",
+  "image": "https://arizonapalletdepot.com/pallet-1.jpg",
+  "description": "Plastic and wood pallets in Phoenix and the East Valley. Bulk pricing, pickup or delivery.",
+  "telephone": "480-340-2578",
+  "email": "mailto:gunner.sparks@simpliancesafe.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4455 E Nunneley Rd Ste 103",
+    "addressLocality": "Gilbert",
+    "addressRegion": "AZ",
+    "postalCode": "85296"
+  },
+  "areaServed": "Phoenix Metropolitan Area",
+  "openingHours": "Mo-Fr 08:00-17:00"
+}
+</script>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Arizona Pallet Depot" />
-  <meta property="og:description" content="Plastic & wood pallets in Phoenix. Bulk discounts. Fast pickup or delivery." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://arizonapalletdepot.com" />
-  <meta property="og:image" content="/pallet-1.jpg" />
-
-  <!-- LocalBusiness JSON-LD (SEO) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Arizona Pallet Depot",
-    "url": "https://arizonapalletdepot.com",
-    "description": "Plastic and wood pallets in Phoenix and the East Valley. Bulk pricing, pickup or delivery.",
-    "areaServed": "Phoenix Metropolitan Area",
-    "image": "https://arizonapalletdepot.com/pallet-1.jpg",
-    "address": { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ" },
-    "telephone": ""
-  }
-  </script>
+<style>
+  :root { --blue:#2563eb; --ink:#0f172a; --ink2:#334155; --bg:#f8fafc; --card:#ffffff; --border:#e2e8f0; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  a{color:var(--blue);text-decoration:none}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border)}
+  .topbar{background:#0b1220;color:#fff}
+  .topbar .container{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:8px 16px;font-size:14px}
+  .container{max-width:1100px;margin:0 auto;padding:14px 16px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .btn{display:inline-block;border-radius:12px;padding:12px 16px;font-weight:600}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-outline{border:1px solid var(--blue);color:var(--blue)}
+  /* Hero */
+  .hero{position:relative;height:52vh;min-height:360px;overflow:hidden}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1))}
+  .hero-content{position:absolute;inset:0;display:flex;align-items:center}
+  .hero-inner{max-width:1100px;margin:0 auto;padding:0 16px;color:#fff}
+  h1{font-size:40px;line-height:1.15;margin:0 0 10px}
+  p.lead{opacity:.95;font-size:18px;max-width:720px;margin:0 0 16px}
+  /* Badges */
+  .badges{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .badge{background:#f1f5f9;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+  @media(min-width:720px){ .badge-grid{grid-template-columns:repeat(4,1fr)} }
+  /* Sections */
+  section{padding:48px 16px}
+  h2{font-size:28px;margin:0 0 18px}
+  .gallery{display:grid;gap:12px}
+  @media(min-width:900px){ .gallery{grid-template-columns:repeat(3,1fr)} }
+  .gallery img{width:100%;display:block;border-radius:12px;border:1px solid var(--border)}
+  .two-col{display:grid;gap:24px}
+  @media(min-width:900px){ .two-col{grid-template-columns:1.2fr .8fr} }
+  .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px}
+  /* Form */
+  form{display:grid;gap:12px}
+  .grid2{display:grid;gap:12px}
+  @media(min-width:720px){ .grid2{grid-template-columns:1fr 1fr} }
+  input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;font:inherit}
+  textarea{min-height:120px;resize:vertical}
+  footer{background:#fff;border-top:1px solid var(--border);color:var(--ink2)}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="text-xl font-bold">Arizona <span class="text-blue-600">Pallet Depot</span></div>
-      <nav class="hidden sm:flex gap-6 text-sm">
-        <a href="#gallery"
+<body>
+
+<!-- Contact bar -->
+<div class="topbar">
+  <div class="container">
+    <div>Call: <a style="color:#93c5fd" href="tel:4803402578">480-340-2578</a> &nbsp;•&nbsp; Email: <a style="color:#93c5fd" href="mailto:gunner.sparks@simpliancesafe.com">gunner.sparks@simpliancesafe.com</a></div>
+    <div>Address: <a style="color:#93c5fd" href="#map">4455 E Nunneley Rd Ste 103, Gilbert AZ, 85296</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container row">
+    <div style="font-weight:700;font-size:20px">Arizona <span style="color:var(--blue)">Pallet Depot</span></div>
+    <nav class="hide-mobile">
+      <a href="#gallery" style="margin-right:16px">Inventory</a>
+      <a href="#why" style="margin-right:16px">Why Us</a>
+      <a class="btn btn-outline" href="#quote">Request Quote</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="pallet-1.jpg" alt="Stacks of blue plastic pallets at our Phoenix yard">
+  <div class="hero-content">
+    <div class="hero-inner">
+      <h1>Phoenix Pallets — Bulk Pricing, Fast Pickup & Delivery</h1>
+      <p class="lead">Plastic and wood pallets available now in the Phoenix metro and East Valley. Reliable stock. Local service.</p>
+      <div>
+        <a class="btn btn-primary" href="#quote" style="margin-right:8px">Get a Quote</a>
+        <a class="btn" href="#gallery" style="background:#fff;color:#111">See Inventory</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="badges">
+  <div class="container">
+    <div class="badge-grid">
+      <div class="badge">Local<br><strong>Phoenix / East Valley</strong></div>
+      <div class="badge">Bulk<br><strong>Wholesale Pricing</strong></div>
+      <div class="badge">Flexible<br><strong>Pickup or Delivery</strong></div>
+      <div class="badge">Inventory<br><strong>Plastic & Wood</strong></div>
+    </div>
+  </div>
+</div>
+
+<section id="gallery">
+  <div class="container">
+    <h2>Current Inventory</h2>
+    <div class="gallery">
+      <img src="pallet-2.jpg" alt="Blue plastic pallets stacked at the yard">
+      <img src="pallet-3.jpg" alt="Plastic pallet underside detail">
+      <img src="pallet-4.jpg" alt="Large lot of pallets ready for pickup">
+      <img src="pallet-5.jpg" alt="Mixed blue pallets in sunlight" style="grid-column:1/-1">
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container two-col">
+    <div>
+      <h2>Why Arizona Pallet Depot?</h2>
+      <ul style="margin:0;padding-left:20px;line-height:1.6;color:var(--ink2)">
+        <li>Local stock in Phoenix; reduce lead times and freight costs</li>
+        <li>Consistent quality & grading; ideal for repeat buyers</li>
+        <li>Bulk discounts and recurring purchase options</li>
+        <li>Pickup at our yard or scheduled delivery across the Valley</li>
+      </ul>
+      <div style="margin-top:12px;color:var(--ink2)">Hours: Mon–Fri 8:00am–5:00pm</div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 8px;font-size:20px">Specs Snapshot</h3>
+      <p style="margin:0;color:var(--ink2)">Common sizes in stock include 1200×1000×145 plastic pallets and standard wood 48×40. Ask for the latest counts.</p>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="container" style="max-width:760px">
+    <h2>Request a Quote</h2>
+    <!-- Replace with your actual Formspree endpoint -->
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <div class="grid2">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="grid2">
+        <input type="tel" name="phone" placeholder="Phone (for faster coordination)" required>
+        <input type="text" name="company" placeholder="Company (optional)">
+      </div>
+      <div class="grid2">
+        <select name="pallet_type" required>
+          <option value="">Pallet type</option>
+          <option>Plastic</option>
+          <option>Wood</option>
+          <option>Both / Not sure</option>
+        </select>
+        <input type="number" name="quantity" placeholder="Quantity needed" min="1" required>
+      </div>
+      <div class="grid2">
+        <input type="text" name="city" placeholder="City (e.g., Phoenix, Mesa, Gilbert)" required>
+        <select name="fulfillment" required>
+          <option value="">Pickup or Delivery?</option>
+          <option>Pickup</option>
+          <option>Delivery</option>
+        </select>
+      </div>
+      <textarea name="message" placeholder="Timing, special specs, recurring needs, etc."></textarea>
+      <input type="text" name="_gotcha" style="display:none">
+      <button class="btn btn-primary" type="submit">Send Request</button>
+      <p style="font-size:12px;color:var(--ink2)">By submitting, you agree we can contact you about your request.</p>
+    </form>
+  </div>
+</section>
+
+<section id="map" style="background:#fff;border-top:1px solid var(--border)">
+  <div class="container two-col" style="align-items:start">
+    <div class="card">
+      <h2 style="margin-top:0">Find Us</h2>
+      <p style="margin:.25rem 0;color:var(--ink2)">
+        <strong>Arizona Pallet Depot</strong><br>
+        4455 E Nunneley Rd Ste 103<br>
+        Gilbert, AZ 85296
+      </p>
+      <p style="margin:.25rem 0;"><a href="tel:4803402578" class="btn btn-outline">Call: 480-340-2578</a></p>
+      <p style="margin:.25rem 0;"><a href="mailto:gunner.sparks@simpliancesafe.com">Email: gunner.sparks@simpliancesafe.com</a></p>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <iframe
+        title="Map"
+        width="100%" height="360" style="border:0"
+        loading="lazy" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=4455%20E%20Nunneley%20Rd%20Ste%20103%2C%20Gilbert%2C%20AZ%2085296&output=embed">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="padding:18px 16px;font-size:14px">
+    © <span id="y"></span> Arizona Pallet Depot • Gilbert, AZ • <a href="tel:4803402578">480-340-2578</a>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
+
