@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arizona Pallet Depot | Phoenix Pallets – Buy & Pickup/Delivery</title>
-<meta name="description" content="Arizona Pallet Depot supplies plastic and wood pallets in Phoenix and across the East Valley. Bulk pricing, fast pickup, and local delivery. Get a quote today.">
+<title>Arizona Pallet Depot | Phoenix Plastic Pallets – Buy & Pickup/Delivery</title>
+<meta name="description" content="Arizona Pallet Depot supplies plastic pallets in Phoenix and across the East Valley. Bulk pricing, fast pickup, and local delivery. Get a quote today.">
 <meta property="og:title" content="Arizona Pallet Depot">
-<meta property="og:description" content="Plastic & wood pallets in Phoenix. Bulk discounts. Fast pickup or delivery.">
+<meta property="og:description" content="Plastic pallets in Phoenix. Bulk discounts. Fast pickup or delivery.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arizonapalletdepot.com">
 <meta property="og:image" content="/pallet-1.jpg">
@@ -21,7 +21,7 @@
   "name": "Arizona Pallet Depot",
   "url": "https://arizonapalletdepot.com",
   "image": "https://arizonapalletdepot.com/pallet-1.jpg",
-  "description": "Plastic and wood pallets in Phoenix and the East Valley. Bulk pricing, pickup or delivery.",
+  "description": "Plastic pallets in Phoenix and the East Valley. Bulk pricing, pickup or delivery.",
   "telephone": "480-340-2578",
   "email": "mailto:gunner.sparks@simpliancesafe.com",
   "address": {
@@ -39,6 +39,7 @@
 <style>
   :root { --blue:#2563eb; --ink:#0f172a; --ink2:#334155; --bg:#f8fafc; --card:#ffffff; --border:#e2e8f0; }
   *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  html{scroll-behavior:smooth}
   a{color:var(--blue);text-decoration:none}
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border)}
   .topbar{background:#0b1220;color:#fff}
@@ -93,7 +94,7 @@
   <div class="container row">
     <div style="font-weight:700;font-size:20px">Arizona <span style="color:var(--blue)">Pallet Depot</span></div>
     <nav class="hide-mobile">
-      <a href="#gallery" style="margin-right:16px">Inventory</a>
+      <a href="#gallery" style="margin-right:16px">Images</a>
       <a href="#why" style="margin-right:16px">Why Us</a>
       <a class="btn btn-outline" href="#quote">Request Quote</a>
     </nav>
@@ -104,11 +105,10 @@
   <img src="pallet-1.jpg" alt="Stacks of blue plastic pallets at our Phoenix yard">
   <div class="hero-content">
     <div class="hero-inner">
-      <h1>Phoenix Pallets — Bulk Pricing, Fast Pickup & Delivery</h1>
-      <p class="lead">Plastic and wood pallets available now in the Phoenix metro and East Valley. Reliable stock. Local service.</p>
+      <h1>Phoenix Plastic Pallets — Bulk Pricing, Fast Pickup & Delivery</h1>
+      <p class="lead">Plastic pallets available now in the Phoenix metro and East Valley. Reliable stock. Local service.</p>
       <div>
-        <a class="btn btn-primary" href="#quote" style="margin-right:8px">Get a Quote</a>
-        <a class="btn" href="#gallery" style="background:#fff;color:#111">See Inventory</a>
+        <a class="btn btn-primary" href="#quote">Get a Quote</a>
       </div>
     </div>
   </div>
@@ -120,14 +120,14 @@
       <div class="badge">Local<br><strong>Phoenix / East Valley</strong></div>
       <div class="badge">Bulk<br><strong>Wholesale Pricing</strong></div>
       <div class="badge">Flexible<br><strong>Pickup or Delivery</strong></div>
-      <div class="badge">Inventory<br><strong>Plastic & Wood</strong></div>
+      <div class="badge">Inventory<br><strong>Plastic Pallets</strong></div>
     </div>
   </div>
 </div>
 
 <section id="gallery">
   <div class="container">
-    <h2>Current Inventory</h2>
+    <h2>Images</h2>
     <div class="gallery">
       <img src="pallet-2.jpg" alt="Blue plastic pallets stacked at the yard">
       <img src="pallet-3.jpg" alt="Plastic pallet underside detail">
@@ -151,7 +151,7 @@
     </div>
     <div class="card">
       <h3 style="margin:0 0 8px;font-size:20px">Specs Snapshot</h3>
-      <p style="margin:0;color:var(--ink2)">Common sizes in stock include 1200×1000×145 plastic pallets and standard wood 48×40. Ask for the latest counts.</p>
+      <p style="margin:0;color:var(--ink2)">Common sizes in stock include 1200×1000×145 plastic pallets. Ask for the latest counts.</p>
     </div>
   </div>
 </section>
@@ -159,8 +159,16 @@
 <section id="quote">
   <div class="container" style="max-width:760px">
     <h2>Request a Quote</h2>
-    <!-- Replace with your actual Formspree endpoint -->
-    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+    <!-- ✅ REPLACE THE action URL BELOW WITH YOUR REAL FORMSPREE ENDPOINT -->
+    <form action="https://formspree.io/f/PASTE_FORMSPREE_ENDPOINT_HERE" method="POST">
+      <!-- Optional email subject you’ll receive -->
+      <input type="hidden" name="_subject" value="New Quote Request — Arizona Pallet Depot">
+      <!-- Optional redirect after submit -->
+      <input type="hidden" name="_redirect" value="https://arizonapalletdepot.com/thanks.html">
+      <!-- Since we removed the selector, pass this value through -->
+      <input type="hidden" name="pallet_type" value="Plastic">
+
       <div class="grid2">
         <input type="text" name="name" placeholder="Full name" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -170,24 +178,14 @@
         <input type="text" name="company" placeholder="Company (optional)">
       </div>
       <div class="grid2">
-        <select name="pallet_type" required>
-          <option value="">Pallet type</option>
-          <option>Plastic</option>
-          <option>Wood</option>
-          <option>Both / Not sure</option>
-        </select>
         <input type="number" name="quantity" placeholder="Quantity needed" min="1" required>
-      </div>
-      <div class="grid2">
         <input type="text" name="city" placeholder="City (e.g., Phoenix, Mesa, Gilbert)" required>
-        <select name="fulfillment" required>
-          <option value="">Pickup or Delivery?</option>
-          <option>Pickup</option>
-          <option>Delivery</option>
-        </select>
       </div>
-      <textarea name="message" placeholder="Timing, special specs, recurring needs, etc."></textarea>
+      <textarea name="message" placeholder="Timing, specs, recurring needs, delivery notes, etc."></textarea>
+
+      <!-- Spam honeypot -->
       <input type="text" name="_gotcha" style="display:none">
+
       <button class="btn btn-primary" type="submit">Send Request</button>
       <p style="font-size:12px;color:var(--ink2)">By submitting, you agree we can contact you about your request.</p>
     </form>
