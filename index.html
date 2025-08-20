@@ -32,7 +32,10 @@
     "postalCode": "85296"
   },
   "areaServed": "Phoenix Metropolitan Area",
-  "openingHours": "Mo-Fr 08:00-17:00"
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "07:30", "closes": "16:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "07:30", "closes": "11:30" }
+  ]
 }
 </script>
 
@@ -78,6 +81,8 @@
   input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;font:inherit}
   textarea{min-height:120px;resize:vertical}
   footer{background:#fff;border-top:1px solid var(--border);color:var(--ink2)}
+  .note{font-size:14px;color:var(--ink2);background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+  .note strong{color:#0b1220}
 </style>
 </head>
 <body>
@@ -107,9 +112,7 @@
     <div class="hero-inner">
       <h1>Phoenix Plastic Pallets — Bulk Pricing, Fast Pickup & Delivery</h1>
       <p class="lead">Plastic pallets available now in the Phoenix metro and East Valley. Reliable stock. Local service.</p>
-      <div>
-        <a class="btn btn-primary" href="#quote">Get a Quote</a>
-      </div>
+      <!-- button intentionally removed per request -->
     </div>
   </div>
 </section>
@@ -147,11 +150,13 @@
         <li>Bulk discounts and recurring purchase options</li>
         <li>Pickup at our yard or scheduled delivery across the Valley</li>
       </ul>
-      <div style="margin-top:12px;color:var(--ink2)">Hours: Mon–Fri 8:00am–5:00pm</div>
+      <div style="margin-top:12px;color:var(--ink2)">
+        <strong>Hours:</strong> Mon–Thu 7:30am–4:30pm; Fri 7:30am–11:30am
+      </div>
     </div>
     <div class="card">
       <h3 style="margin:0 0 8px;font-size:20px">Specs Snapshot</h3>
-      <p style="margin:0;color:var(--ink2)">Common sizes in stock include 1200×1000×145 plastic pallets. Ask for the latest counts.</p>
+      <p style="margin:0;color:var(--ink2)">Common size in stock: <strong>48&quot; × 40&quot; × 5&quot;</strong>. Ask for the latest counts.</p>
     </div>
   </div>
 </section>
@@ -160,7 +165,6 @@
   <div class="container" style="max-width:760px">
     <h2>Request a Quote</h2>
 
-    <!-- ✅ Live Formspree endpoint -->
     <form action="https://formspree.io/f/xblkvywz" method="POST">
       <input type="hidden" name="_subject" value="New Quote Request — Arizona Pallet Depot">
       <input type="hidden" name="_redirect" value="https://arizonapalletdepot.com/thanks.html">
@@ -182,7 +186,15 @@
 
       <input type="text" name="_gotcha" style="display:none">
 
-      <button class="btn btn-primary" type="submit">Send Request</button>
+      <!-- Pricing callouts ABOVE the button -->
+      <div class="note" style="margin-top:10px">
+        <strong>Prices start at $50.00 per pallet.</strong> Request a quote for shipping or bulk orders.
+      </div>
+      <div class="note" style="margin-top:10px">
+        Compare to Uline price of <strong>$155</strong> for a similar pallet — our pallets are <em>used</em>, saving you <strong>over $100</strong>.
+      </div>
+
+      <button class="btn btn-primary" type="submit" style="margin-top:14px">Send Request</button>
       <p style="font-size:12px;color:var(--ink2)">By submitting, you agree we can contact you about your request.</p>
     </form>
   </div>
@@ -221,4 +233,3 @@
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
-
