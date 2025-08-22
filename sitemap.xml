@@ -15,9 +15,26 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- Blog (folder route) -->
+  <!-- Blog index -->
   <url>
     <loc>https://arizonapalletdepot.com/blog/</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://arizonapalletdepot.com/blog/where-to-buy-pallets-phoenix/</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://arizonapalletdepot.com/blog/value-vs-industrial-pallets/</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://arizonapalletdepot.com/blog/how-many-pallets-fit/</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
