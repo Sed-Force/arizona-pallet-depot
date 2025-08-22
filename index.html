@@ -279,6 +279,47 @@
           <p class="text-sm text-slate-600 mt-1">Best rates on 200+ units</p>
         </div>
       </div>
+      
+<!-- Pallet Calculator -->
+<div class="mt-10 bg-white rounded-xl border border-slate-200 p-6">
+  <h3 class="text-xl font-bold">Pallet Cost Calculator</h3>
+  <p class="text-slate-600 text-sm mt-1">Enter quantity and select pallet type to estimate your total.</p>
+
+  <div class="mt-4 grid sm:grid-cols-2 gap-4 items-end">
+    <!-- Quantity -->
+    <div>
+      <label for="calc-qty" class="block text-sm font-semibold mb-1">Quantity</label>
+      <div class="flex items-center border rounded-lg overflow-hidden w-44">
+        <button type="button" id="calc-minus" class="px-3 py-2 bg-slate-100">-</button>
+        <input id="calc-qty" type="number" min="1" value="1"
+               class="w-full text-center border-x border-slate-200 py-2" />
+        <button type="button" id="calc-plus" class="px-3 py-2 bg-slate-100">+</button>
+      </div>
+    </div>
+
+    <!-- Type -->
+    <div>
+      <label for="calc-type" class="block text-sm font-semibold mb-1">Pallet Type</label>
+      <select id="calc-type" class="w-full rounded-lg border border-slate-300 px-3 py-2">
+        <option value="15">Value Pallet — $15/unit</option>
+        <option value="30">Industrial Grade — $30/unit</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="mt-4 text-lg font-bold text-blue-600">
+    Total: $<span id="calc-total">15.00</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-4">
+    <a href="#quote"
+       class="inline-block px-5 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+      Contact for Quote
+    </a>
+  </div>
+</div>
 
       <div class="mt-6 rounded-xl border border-dashed border-slate-300 p-4 text-slate-700">
         <strong>Compared to competitors</strong> who list the same pallets starting at $155.00 — get the same utility at a fraction of the cost.
@@ -407,6 +448,44 @@
       <a href="#quote" class="flex-1 text-center px-4 py-3 rounded-xl bg-white border border-slate-300 font-semibold">Quote</a>
     </div>
   </div>
+
+  <script>
+  (function () {
+    const qtyInput = document.getElementById('calc-qty');
+    const typeSelect = document.getElementById('calc-type');
+    const totalEl = document.getElementById('calc-total');
+    const plusBtn = document.getElementById('calc-plus');
+    const minusBtn = document.getElementById('calc-minus');
+
+    function clampToInt(val, min) {
+      const n = parseInt(val, 10);
+      return isNaN(n) ? min : Math.max(min, n);
+    }
+
+    function updateTotal() {
+      const qty = clampToInt(qtyInput.value, 1);
+      const price = parseFloat(typeSelect.value);
+      totalEl.textContent = (qty * price).toFixed(2);
+    }
+
+    plusBtn.addEventListener('click', () => {
+      qtyInput.value = clampToInt(qtyInput.value, 1) + 1;
+      updateTotal();
+    });
+
+    minusBtn.addEventListener('click', () => {
+      const next = clampToInt(qtyInput.value, 1) - 1;
+      qtyInput.value = Math.max(1, next);
+      updateTotal();
+    });
+
+    qtyInput.addEventListener('input', updateTotal);
+    typeSelect.addEventListener('change', updateTotal);
+
+    // init
+    updateTotal();
+  })();
+</script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
