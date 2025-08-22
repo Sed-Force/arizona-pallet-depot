@@ -5,10 +5,10 @@
   <url>
     <loc>https://arizonapalletdepot.com/</loc>
     <priority>1.0</priority>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
   </url>
 
-  <!-- About Page -->
+  <!-- About page -->
   <url>
     <loc>https://arizonapalletdepot.com/about.html</loc>
     <priority>0.8</priority>
@@ -24,18 +24,20 @@
 
   <!-- Blog posts -->
   <url>
-    <loc>https://arizonapalletdepot.com/blog/where-to-buy-pallets-phoenix/</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://arizonapalletdepot.com/blog/value-vs-industrial-pallets/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
+
   <url>
     <loc>https://arizonapalletdepot.com/blog/how-many-pallets-fit/</loc>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://arizonapalletdepot.com/blog/where-to-buy-pallets-phoenix/</loc>
+    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
