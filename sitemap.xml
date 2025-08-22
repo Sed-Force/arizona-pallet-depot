@@ -8,11 +8,19 @@
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- About Page (once created) -->
+  <!-- About Page -->
   <url>
     <loc>https://arizonapalletdepot.com/about.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
 
+  <!-- Blog Post: Where to Buy Pallets in Phoenix -->
+  <url>
+    <loc>https://arizonapalletdepot.com/blog-where-to-buy-pallets-phoenix.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>
+
