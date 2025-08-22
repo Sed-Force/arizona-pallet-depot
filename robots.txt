@@ -1,4 +1,10 @@
+# robots.txt for https://arizonapalletdepot.com
+
 User-agent: *
 Allow: /
 
+# Disallow sensitive or duplicate content (none needed right now)
+# Disallow: /admin/
+
+# Point crawlers to the sitemap
 Sitemap: https://arizonapalletdepot.com/sitemap.xml
