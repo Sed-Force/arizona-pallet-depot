@@ -15,12 +15,11 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- Blog Post: Where to Buy Pallets in Phoenix -->
+  <!-- Blog (folder route) -->
   <url>
-    <loc>https://arizonapalletdepot.com/blog-where-to-buy-pallets-phoenix.html</loc>
+    <loc>https://arizonapalletdepot.com/blog/</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
-
