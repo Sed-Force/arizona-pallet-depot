@@ -2,7 +2,6 @@
 
 export const site = {
   name: "Arizona Pallet Depot",
-  shortName: "AD",
   url: "https://arizonapalletdepot.com",
   phone: {
     display: "602-644-0600",
