@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arizona Pallet Depot (Next.js)
 
-## Getting Started
+Next.js rebuild of the static `arizona-pallet-depot` site — App Router, TypeScript, Tailwind CSS v4.
 
-First, run the development server:
+## Getting started
 
 ```bash
+cp .env.example .env.local   # then set NEXT_PUBLIC_PAYPAL_CLIENT_ID
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/                    Routes: /, /about, /calculator, /blog, /blog/[slug], /thanks, sitemap, robots
+  components/
+    layout/               Global Navbar, Footer, MobileActionBar (rendered once in app/layout.tsx)
+    ui/                   Primitives: Button/ButtonLink, Card, Container, Section, SectionHeading, Logo, JsonLd
+    sections/             Page sections: Hero, FeatureGrid, PricingCards, ServiceArea, FaqList, QuoteForm, CtaPanel
+    blog/                 PostCard, BlogBrowser (search + category filter), Prose
+    calculator/           PalletCalculator (client component with PayPal checkout)
+  content/posts.ts        Blog post metadata + registry; post bodies live in content/posts/*.tsx
+  lib/site.ts             Business details, nav items, products, FAQs — edit here, not in pages
+  lib/schema.ts           JSON-LD structured data
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Common edits
 
-## Learn More
+- **Phone, email, hours, service area, prices:** `src/lib/site.ts`
+- **Nav links:** `navItems` in `src/lib/site.ts` (used by navbar and footer)
+- **New blog post:** add a component in `src/content/posts/`, then its metadata to `posts` and the component to `postContent` in `src/content/posts.ts`
 
-To learn more about Next.js, take a look at the following resources:
+## Before launch
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Set the real Formspree ID in `site.quoteFormAction` (`src/lib/site.ts`) — it's still the `yourFormID` placeholder from the original site.
+- Set `NEXT_PUBLIC_PAYPAL_CLIENT_ID` in the hosting environment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Old URLs (`/about.html`, `/calculator.html`, `/pallet-N.jpg`, …) permanently redirect to their new paths (`next.config.ts`).
