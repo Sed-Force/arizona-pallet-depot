@@ -72,7 +72,8 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
         </div>
 
         {image && (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-surface-3 md:aspect-[5/4]">
+          // order-first: image leads on mobile; from md it returns to the right-hand column.
+          <div className="relative order-first aspect-[4/3] overflow-hidden rounded-2xl bg-surface-3 md:order-none md:aspect-[5/4]">
             <Image
               src={image.src}
               alt={image.alt}
