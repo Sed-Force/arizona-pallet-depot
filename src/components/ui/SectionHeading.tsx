@@ -1,5 +1,3 @@
-import { cn } from "@/lib/cn";
-
 type SectionHeadingProps = {
   title: string;
   description?: React.ReactNode;
@@ -11,7 +9,8 @@ export function SectionHeading({ title, description, as: Tag = "h2", className }
   return (
     <div className={className}>
       <Tag className="text-2xl font-bold md:text-3xl">{title}</Tag>
-      {description && <p className={cn("mt-3 text-body")}>{description}</p>}
+      {/* A div, not a p: description can be any ReactNode, including block elements. */}
+      {description && <div className="mt-3 text-body">{description}</div>}
     </div>
   );
 }
