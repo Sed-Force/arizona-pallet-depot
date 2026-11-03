@@ -1,81 +1,74 @@
 "use client";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import { useState } from "react";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+} from "@headlessui/react";
+import { cn } from "@/lib/cn";
 import type { Faq } from "@/lib/site";
 
-// MUI's default palette is light-only, so colors come from the site's theme tokens via className.
-// MUI's styles sit in the `mui` CSS layer, below Tailwind utilities, so these classes win.
+// Headless UI ships behavior only; styling follows the site's cards (rounded-xl, border, surface)
+// and nav links (semibold, text-link when active). State arrives as data-open / data-selected attributes.
 
-/** Mobile: stacked MUI accordions. */
+/** Mobile: stacked disclosure cards. */
 export function FaqAccordions({ faqs, className }: { faqs: Faq[]; className?: string }) {
   return (
-    <div className={className}>
-      {faqs.map((faq, i) => (
-        <Accordion
+    <div className={cn("flex flex-col gap-3", className)}>
+      {faqs.map((faq) => (
+        <Disclosure
           key={faq.question}
-          disableGutters
-          elevation={0}
-          // before:hidden drops MUI's divider line between adjacent accordions; each is its own card.
-          className="mb-3 rounded-xl border border-border bg-surface text-foreground before:hidden last:mb-0"
+          as="div"
+          className="rounded-xl border border-border bg-surface transition-colors data-open:border-primary/40"
         >
-          <AccordionSummary
-            id={`faq-accordion-${i}`}
-            aria-controls={`faq-accordion-panel-${i}`}
-            expandIcon={<ExpandMoreIcon className="text-muted" />}
-            className="px-5"
+          <DisclosureButton className="group flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <h3 className="group-data-open:text-link">{faq.question}</h3>
+            <ExpandMoreIcon className="shrink-0 text-muted transition-transform duration-200 group-data-open:rotate-180 group-data-open:text-link" />
+          </DisclosureButton>
+          <DisclosurePanel
+            transition
+            className="origin-top px-5 pb-5 text-body transition duration-200 ease-out data-closed:-translate-y-1 data-closed:opacity-0"
           >
-            <h3 className="font-semibold">{faq.question}</h3>
-          </AccordionSummary>
-          <AccordionDetails id={`faq-accordion-panel-${i}`} className="px-5 pt-0 pb-5 text-body">
             {faq.answer}
-          </AccordionDetails>
-        </Accordion>
+          </DisclosurePanel>
+        </Disclosure>
       ))}
     </div>
   );
 }
 
-/** Wide screens: MUI vertical tabs, questions on the left and the selected answer on the right. */
+/** Wide screens: vertical tabs, questions on the left and the selected answer in a card on the right. */
 export function FaqTabs({ faqs, className }: { faqs: Faq[]; className?: string }) {
-  const [selected, setSelected] = useState(0);
-  const faq = faqs[selected];
-
   return (
-    <div className={className}>
-      <Tabs
-        orientation="vertical"
-        value={selected}
-        onChange={(_e, value: number) => setSelected(value)}
-        aria-label="Frequently asked questions"
-        className="w-80 shrink-0 border-r border-border"
-        slotProps={{ indicator: { className: "bg-primary" } }}
-      >
-        {faqs.map((f, i) => (
+    <TabGroup vertical className={className}>
+      <TabList aria-label="Frequently asked questions" className="flex w-80 shrink-0 flex-col gap-1">
+        {faqs.map((faq) => (
           <Tab
-            key={f.question}
-            id={`faq-tab-${i}`}
-            aria-controls={`faq-tabpanel-${i}`}
-            label={f.question}
-            className="max-w-none items-start px-5 py-4 text-left text-base font-semibold normal-case text-muted aria-selected:text-link"
-          />
+            key={faq.question}
+            className="rounded-lg border-l-4 border-transparent px-4 py-3 text-left font-semibold text-foreground-2 transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary data-selected:border-primary data-selected:bg-primary-soft data-selected:text-link"
+          >
+            {faq.question}
+          </Tab>
         ))}
-      </Tabs>
+      </TabList>
 
-      <div
-        role="tabpanel"
-        id={`faq-tabpanel-${selected}`}
-        aria-labelledby={`faq-tab-${selected}`}
-        className="flex-1 rounded-xl border border-border bg-surface p-6"
-      >
-        <h3 className="text-lg font-semibold">{faq.question}</h3>
-        <p className="mt-3 text-body">{faq.answer}</p>
-      </div>
-    </div>
+      <TabPanels className="flex-1">
+        {faqs.map((faq) => (
+          <TabPanel
+            key={faq.question}
+            className="rounded-xl border border-border bg-surface p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <h3 className="text-lg font-semibold">{faq.question}</h3>
+            <p className="mt-3 text-body">{faq.answer}</p>
+          </TabPanel>
+        ))}
+      </TabPanels>
+    </TabGroup>
   );
 }
