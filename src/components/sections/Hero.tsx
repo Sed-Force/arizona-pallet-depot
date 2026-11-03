@@ -32,6 +32,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
       >
         <div>
           {eyebrow && <p className="text-sm text-slate-500">{eyebrow}</p>}
+          
           <h1
             className={
               compact
@@ -41,7 +42,9 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
           >
             {title}
           </h1>
+
           {description && <div className="mt-4 text-lg text-slate-700">{description}</div>}
+          
           {actions && actions.length > 0 && (
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               {actions.map((a) => (

@@ -30,9 +30,9 @@ export default function HomePage() {
           </p>
         }
         actions={[
-          { label: "Call Now", href: links.tel },
           { label: "Request Bulk Pricing", href: links.quote, variant: "secondary" },
           { label: "Text Us", href: links.sms, variant: "secondary" },
+          { label: "Call Now", href: links.tel },
         ]}
         image={{ src: "/images/pallet-4.jpg", alt: "Used 48x40 Plastic pallets for sale in Phoenix AZ" }}
       >
