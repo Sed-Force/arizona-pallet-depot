@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 
 export type HeroAction = {
   label: string;
@@ -46,9 +47,21 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
           {description && <div className="mt-4 text-lg text-slate-700">{description}</div>}
           
           {actions && actions.length > 0 && (
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              {actions.map((a) => (
-                <ButtonLink key={a.label} href={a.href} variant={a.variant ?? "primary"}>
+            <div
+              className={
+                actions.length === 3
+                  ? // Three actions: stacked on mobile, first-over-pair on sm–md, one row on lg+.
+                    "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-[auto_1fr_1fr]"
+                  : "mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+              }
+            >
+              {actions.map((a, i) => (
+                <ButtonLink
+                  key={a.label}
+                  href={a.href}
+                  variant={a.variant ?? "primary"}
+                  className={cn("whitespace-nowrap", actions.length === 3 && i === 0 && "sm:col-span-2 lg:col-span-1")}
+                >
                   {a.label}
                 </ButtonLink>
               ))}

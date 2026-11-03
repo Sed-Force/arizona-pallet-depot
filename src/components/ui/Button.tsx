@@ -5,9 +5,10 @@ type Variant = "primary" | "secondary" | "dark";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-blue-600 text-white hover:bg-blue-700",
+  // Transparent borders keep filled buttons the same height as the outlined ones.
+  primary: "border border-transparent bg-blue-600 text-white hover:bg-blue-700",
   secondary: "border border-slate-300 bg-white text-slate-900 hover:bg-slate-100",
-  dark: "bg-slate-900 text-white hover:opacity-90",
+  dark: "border border-transparent bg-slate-900 text-white hover:opacity-90",
 };
 
 const sizes: Record<Size, string> = {
