@@ -11,7 +11,7 @@ export function SectionHeading({ title, description, as: Tag = "h2", className }
   return (
     <div className={className}>
       <Tag className="text-2xl font-bold md:text-3xl">{title}</Tag>
-      {description && <p className={cn("mt-3 text-slate-700")}>{description}</p>}
+      {description && <p className={cn("mt-3 text-body")}>{description}</p>}
     </div>
   );
 }

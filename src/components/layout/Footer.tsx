@@ -7,21 +7,21 @@ import { CurrentYear } from "./CurrentYear";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-border bg-surface">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo />
-          <p className="mt-3 max-w-xs text-sm text-slate-600">
+          <p className="mt-3 max-w-xs text-sm text-muted">
             Used 48×40 plastic pallets for the Phoenix metro. Pickup in Gilbert by appointment; delivery by quote.
           </p>
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold tracking-wide text-slate-500 uppercase">Explore</h2>
+          <h2 className="text-sm font-semibold tracking-wide text-subtle uppercase">Explore</h2>
           <ul className="mt-3 space-y-2 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-slate-700 hover:text-blue-700">
+                <Link href={item.href} className="text-body hover:text-link">
                   {item.label}
                 </Link>
               </li>
@@ -29,16 +29,16 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="text-sm text-slate-700">
-          <h2 className="text-sm font-semibold tracking-wide text-slate-500 uppercase">Contact</h2>
+        <div className="text-sm text-body">
+          <h2 className="text-sm font-semibold tracking-wide text-subtle uppercase">Contact</h2>
           <ul className="mt-3 space-y-2">
             <li>
               <strong>Call:</strong>{" "}
-              <a className="underline hover:text-blue-700" href={links.tel}>{site.phone.display}</a>
+              <a className="underline hover:text-link" href={links.tel}>{site.phone.display}</a>
             </li>
             <li className="break-words">
               <strong>Email:</strong>{" "}
-              <a className="underline hover:text-blue-700" href={links.mailto}>{site.email}</a>
+              <a className="underline hover:text-link" href={links.mailto}>{site.email}</a>
             </li>
             <li><strong>Pickup:</strong> {site.pickup.location}</li>
           </ul>
@@ -50,8 +50,8 @@ export function Footer() {
         </div>
       </Container>
 
-      <div className="border-t border-slate-200">
-        <Container className="py-5 text-sm text-slate-600">
+      <div className="border-t border-border">
+        <Container className="py-5 text-sm text-muted">
           © <CurrentYear /> {site.name}. All rights reserved.
         </Container>
       </div>

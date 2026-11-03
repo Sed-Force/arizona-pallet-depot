@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { links, products, site } from "@/lib/site";
 
-const field = "w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20";
+const field = "w-full rounded-lg border border-border-strong bg-surface px-3 py-2.5 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
 export function QuoteForm() {
   return (
@@ -54,7 +54,7 @@ export function QuoteForm() {
           </button>
         </form>
 
-        <p className="mt-4 text-sm text-slate-600">
+        <p className="mt-4 text-sm text-muted">
           Prefer to talk?{" "}
           <a href={links.tel} className="font-semibold underline">Call {site.phone.display}</a> or{" "}
           <a href={links.sms} className="font-semibold underline">text us</a>.
@@ -64,9 +64,9 @@ export function QuoteForm() {
       <div className="md:pt-14">
         <Card className="rounded-2xl">
           <h3 className="font-semibold">Pickup</h3>
-          <p className="mt-2 text-slate-700">{site.pickup.location}</p>
-          <p className="mt-4 text-sm text-slate-600">Hours: {site.pickup.hours}</p>
-          <p className="mt-1 text-sm break-words text-slate-600">
+          <p className="mt-2 text-body">{site.pickup.location}</p>
+          <p className="mt-4 text-sm text-muted">Hours: {site.pickup.hours}</p>
+          <p className="mt-1 text-sm break-words text-muted">
             Email: <a className="underline" href={links.mailto}>{site.email}</a>
           </p>
           <div className="mt-5 flex flex-wrap gap-3">

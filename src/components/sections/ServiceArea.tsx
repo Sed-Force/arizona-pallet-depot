@@ -8,12 +8,12 @@ export function ServiceArea({ note }: { note?: string }) {
       <SectionHeading title="Service Area" />
       <ul className="mt-4 flex flex-wrap gap-2">
         {site.serviceArea.map((city) => (
-          <li key={city} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-700">
+          <li key={city} className="rounded-full border border-border bg-background px-3 py-1 text-sm text-body">
             {city}
           </li>
         ))}
       </ul>
-      {note && <p className="mt-3 text-sm text-slate-600">{note}</p>}
+      {note && <p className="mt-3 text-sm text-muted">{note}</p>}
     </Section>
   );
 }

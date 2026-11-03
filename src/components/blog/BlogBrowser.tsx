@@ -21,7 +21,7 @@ export function BlogBrowser({ posts }: BlogBrowserProps) {
 
   return (
     <>
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
           {categories.map((c) => (
             <button
@@ -32,8 +32,8 @@ export function BlogBrowser({ posts }: BlogBrowserProps) {
               className={cn(
                 "rounded-full border px-3 py-1 text-sm transition-colors",
                 category === c
-                  ? "border-blue-600 bg-blue-600 text-white"
-                  : "border-slate-300 bg-slate-50 hover:bg-slate-100",
+                  ? "border-primary bg-primary text-on-primary"
+                  : "border-border-strong bg-background hover:bg-surface-2",
               )}
             >
               {c}
@@ -47,7 +47,7 @@ export function BlogBrowser({ posts }: BlogBrowserProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search posts…"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 sm:w-64"
+          className="w-full rounded-lg border border-border-strong px-3 py-2 sm:w-64"
         />
       </div>
 
@@ -58,7 +58,7 @@ export function BlogBrowser({ posts }: BlogBrowserProps) {
           ))}
         </div>
       ) : (
-        <p className="mt-8 rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-600">
+        <p className="mt-8 rounded-xl border border-dashed border-border-strong p-8 text-center text-muted">
           No posts match your search.
         </p>
       )}

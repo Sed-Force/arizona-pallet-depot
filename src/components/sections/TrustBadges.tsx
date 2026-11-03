@@ -6,7 +6,7 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
+    <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
       {badges.map((b) => (
         <li key={b.label} className="flex items-center gap-2">
           <span aria-hidden className={`h-2.5 w-2.5 rounded-full ${b.color}`} />

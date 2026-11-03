@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { site } from "@/lib/site";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
@@ -44,12 +45,17 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    // suppressHydrationWarning: themeInitScript adds the `dark` class before React hydrates.
+    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Plain inline script (not next/script) so it runs during parsing, before first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       {/* Bottom padding on small screens clears the fixed MobileActionBar. */}
-      <body className="flex min-h-dvh flex-col bg-slate-50 pb-[calc(76px+env(safe-area-inset-bottom))] font-sans text-slate-900 md:pb-0">
+      <body className="flex min-h-dvh flex-col bg-background pb-[calc(76px+env(safe-area-inset-bottom))] font-sans text-foreground md:pb-0">
         <a
           href="#main"
-          className="sr-only z-50 rounded-lg bg-white px-4 py-2 font-semibold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+          className="sr-only z-50 rounded-lg bg-surface px-4 py-2 font-semibold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
         >
           Skip to content
         </a>

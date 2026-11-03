@@ -23,7 +23,7 @@ type HeroProps = {
 
 export function Hero({ title, eyebrow, description, actions, image, children, compact }: HeroProps) {
   return (
-    <section className="bg-gradient-to-b from-white to-slate-50">
+    <section className="bg-gradient-to-b from-surface to-background">
       <Container
         className={
           image
@@ -32,7 +32,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
         }
       >
         <div>
-          {eyebrow && <p className="text-sm text-slate-500">{eyebrow}</p>}
+          {eyebrow && <p className="text-sm text-subtle">{eyebrow}</p>}
           
           <h1
             className={
@@ -44,7 +44,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
             {title}
           </h1>
 
-          {description && <div className="mt-4 text-lg text-slate-700">{description}</div>}
+          {description && <div className="mt-4 text-lg text-body">{description}</div>}
           
           {actions && actions.length > 0 && (
             <div
@@ -72,7 +72,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
         </div>
 
         {image && (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200 md:aspect-[5/4]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-surface-3 md:aspect-[5/4]">
             <Image
               src={image.src}
               alt={image.alt}

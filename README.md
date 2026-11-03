@@ -32,6 +32,12 @@ src/
 - **Nav links:** `navItems` in `src/lib/site.ts` (used by navbar and footer)
 - **New blog post:** add a component in `src/content/posts/`, then its metadata to `posts` and the component to `postContent` in `src/content/posts.ts`
 
+## Theming and dark mode
+
+Colors are theme tokens defined in `src/app/globals.css` (`--color-surface`, `--color-body`, `--color-primary`, …), each available as a Tailwind utility: `bg-surface`, `text-body`, `border-border`, `bg-primary`, and so on. Use these instead of raw palette classes like `bg-white` or `text-slate-700` so components follow the theme. Change a token's light value in `@theme` or its dark value in the `.dark` block to restyle the whole site.
+
+Dark mode follows the `.dark` class on `<html>`. The navbar's `ThemeToggle` flips it and saves the choice in `localStorage`; with no saved choice, the OS setting is used. An inline script in `app/layout.tsx` applies the theme before first paint so there's no flash.
+
 ## Icons
 
 [Material UI icons](https://mui.com/material-ui/material-icons/) (`@mui/icons-material`) are available. Import each icon by path, and size or color it with Tailwind classes:

@@ -7,14 +7,14 @@ export default function Post() {
     <>
       <h2>Quick comparison</h2>
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-lg border border-slate-200 p-4">
+        <div className="rounded-lg border border-border p-4">
           <h3 className="!mt-0">Value Pallet — $15</h3>
           <p className="!mt-1">
             Budget-friendly used 48×40 composite pallet for simple, routine use. Normal cosmetic wear (minor,
             non-structural chips) is expected.
           </p>
         </div>
-        <div className="rounded-lg border border-slate-200 p-4">
+        <div className="rounded-lg border border-border p-4">
           <h3 className="!mt-0">Industrial Grade — $30</h3>
           <p className="!mt-1">
             Heavy-duty used 48×40 composite pallet for higher loads and frequent handling. A cost-saving alternative to

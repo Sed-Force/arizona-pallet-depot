@@ -12,7 +12,7 @@ export default function ThanksPage() {
   return (
     <Container size="narrow" className="py-20 text-center md:py-28">
       <h1 className="text-3xl font-extrabold md:text-4xl">Thanks! We’ve got your request.</h1>
-      <p className="mt-4 text-lg text-slate-700">
+      <p className="mt-4 text-lg text-body">
         We’ll reach out shortly from <strong className="break-words">{site.email}</strong> or call{" "}
         <strong>{site.phone.display}</strong>.
       </p>

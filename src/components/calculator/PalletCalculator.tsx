@@ -29,16 +29,16 @@ export function PalletCalculator() {
     <div className="grid gap-6 md:grid-cols-2">
       <Card>
         <h2 className="text-xl font-bold">Pallet Cost Calculator</h2>
-        <p className="mt-1 text-sm text-slate-600">Enter quantity and select pallet type.</p>
+        <p className="mt-1 text-sm text-muted">Enter quantity and select pallet type.</p>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:items-end">
           <div>
             <label htmlFor="calc-qty" className="mb-1 block text-sm font-semibold">Quantity</label>
-            <div className="flex h-11 w-full items-stretch overflow-hidden rounded-lg border border-slate-300 sm:w-44">
+            <div className="flex h-11 w-full items-stretch overflow-hidden rounded-lg border border-border-strong sm:w-44">
               <button
                 type="button"
                 aria-label="Decrease quantity"
-                className="w-11 shrink-0 bg-slate-100 text-lg hover:bg-slate-200"
+                className="w-11 shrink-0 bg-surface-2 text-lg hover:bg-surface-3"
                 onClick={() => setQty((q) => clampQty(q - 1))}
               >
                 −
@@ -50,12 +50,12 @@ export function PalletCalculator() {
                 inputMode="numeric"
                 value={qty}
                 onChange={(e) => setQty(clampQty(e.target.valueAsNumber))}
-                className="w-full min-w-0 border-x border-slate-200 text-center"
+                className="w-full min-w-0 border-x border-border text-center"
               />
               <button
                 type="button"
                 aria-label="Increase quantity"
-                className="w-11 shrink-0 bg-slate-100 text-lg hover:bg-slate-200"
+                className="w-11 shrink-0 bg-surface-2 text-lg hover:bg-surface-3"
                 onClick={() => setQty((q) => q + 1)}
               >
                 +
@@ -69,7 +69,7 @@ export function PalletCalculator() {
               id="calc-type"
               value={productId}
               onChange={(e) => setProductId(e.target.value as Product["id"])}
-              className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3"
+              className="h-11 w-full rounded-lg border border-border-strong bg-surface px-3"
             >
               {products.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -80,11 +80,11 @@ export function PalletCalculator() {
           </div>
         </div>
 
-        <p className="mt-5 text-lg font-bold text-blue-600" aria-live="polite">
+        <p className="mt-5 text-lg font-bold text-primary" aria-live="polite">
           Total: {currency.format(total)}
         </p>
 
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-subtle">
           Pickup preferred (Gilbert). Delivery/LTL by quote. Payments here don’t schedule pickup automatically — call or
           use the quote form after checkout.
         </p>
@@ -97,7 +97,7 @@ export function PalletCalculator() {
 
       <Card>
         <h2 className="text-xl font-bold">Pay with PayPal</h2>
-        <p className="mt-1 text-sm text-slate-600">The amount below matches your calculator total.</p>
+        <p className="mt-1 text-sm text-muted">The amount below matches your calculator total.</p>
 
         <div className="mt-5">
           {paypalClientId ? (
@@ -133,14 +133,14 @@ export function PalletCalculator() {
               />
             </PayPalScriptProvider>
           ) : (
-            <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            <p className="rounded-lg border border-warning-border bg-warning-soft p-4 text-sm text-warning-foreground">
               Online checkout is unavailable right now. Please call or request a quote.
             </p>
           )}
         </div>
 
         {paid && (
-          <div role="status" className="mt-4 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
+          <div role="status" className="mt-4 rounded-lg border border-success-border bg-success-soft p-4 text-success-foreground">
             Payment received — thank you! We’ll follow up. You can also{" "}
             <Link href={links.quote} className="font-semibold underline">submit pickup/delivery details</Link>.
           </div>

@@ -28,7 +28,7 @@ export function PricingCards() {
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p) => (
           <Card key={p.id} padded={false} className="flex flex-col overflow-hidden">
-            <div className="relative aspect-[4/3] bg-slate-200">
+            <div className="relative aspect-[4/3] bg-surface-3">
               <Image
                 src={p.image}
                 alt={p.imageAlt}
@@ -40,7 +40,7 @@ export function PricingCards() {
             <div className="p-6">
               <h3 className="font-semibold">{p.name}</h3>
               <Price unit="/unit">${p.price}</Price>
-              <p className="mt-1 text-sm text-slate-600">{p.description}</p>
+              <p className="mt-1 text-sm text-muted">{p.description}</p>
             </div>
           </Card>
         ))}
@@ -48,11 +48,11 @@ export function PricingCards() {
         <Card className="flex flex-col justify-center sm:col-span-2 lg:col-span-1">
           <h3 className="font-semibold">Bulk / Custom</h3>
           <Price>Call</Price>
-          <p className="mt-1 text-sm text-slate-600">Best rates on 200+ units</p>
+          <p className="mt-1 text-sm text-muted">Best rates on 200+ units</p>
         </Card>
       </div>
 
-      <div className="mt-6 rounded-xl border border-dashed border-slate-300 p-4 text-slate-700">
+      <div className="mt-6 rounded-xl border border-dashed border-border-strong p-4 text-body">
         <strong>Compared to competitors</strong> who list the same plastic pallets starting at $155.00 — get the same
         utility at a fraction of the cost. <em>Cash preferred.</em>
       </div>

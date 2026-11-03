@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
       />
 
       <Container size="narrow" className="py-8 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
+        <nav aria-label="Breadcrumb" className="mb-4 text-sm text-subtle">
           <Link href="/" className="hover:underline">Home</Link> /{" "}
           <Link href="/blog" className="hover:underline">Blog</Link>
         </nav>

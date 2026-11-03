@@ -51,22 +51,22 @@ export default function AboutPage() {
       <Section tone="surface" containerClassName="grid gap-10 md:grid-cols-2">
         <div>
           <SectionHeading title="Our Story" />
-          <p className="mt-3 text-slate-700">
+          <p className="mt-3 text-body">
             Arizona Pallet Depot started with a simple goal: make pallets easy and affordable for local businesses. We
             focus on the <strong>standard 48×40 composite pallet</strong> that most warehouses need—no endless guessing
             on sizes or specs. Every pallet is inspected for reliable, day-to-day performance.
           </p>
-          <p className="mt-3 text-slate-700">
+          <p className="mt-3 text-body">
             Whether you’re picking up a small batch or coordinating a larger run, we keep it straightforward: fair
             pricing, fast communication, and on-time handoff.
           </p>
         </div>
         <div>
           <SectionHeading title="Why Choose Us" />
-          <ul className="mt-4 space-y-3 text-slate-700">
+          <ul className="mt-4 space-y-3 text-body">
             {reasons.map((r) => (
               <li key={r.label} className="flex gap-2">
-                <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                 <span>
                   <strong>{r.label}</strong> {r.text}
                 </span>
