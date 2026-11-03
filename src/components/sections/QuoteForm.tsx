@@ -2,6 +2,7 @@ import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SelectField } from "@/components/ui/SelectField";
 import { links, products, site } from "@/lib/site";
 
 const field = "w-full rounded-lg border border-border-strong bg-surface px-3 py-2.5 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
@@ -30,21 +31,15 @@ export function QuoteForm() {
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="sr-only" htmlFor="q-qty">Quantity</label>
             <input id="q-qty" name="quantity" type="number" min={1} inputMode="numeric" placeholder="Quantity" className={field} />
-            <label className="sr-only" htmlFor="q-type">Pallet type</label>
-            <select id="q-type" name="type" defaultValue="" className={field}>
-              <option value="">Type</option>
-              {products.map((p) => (
-                <option key={p.id}>{p.name}</option>
-              ))}
-            </select>
+            <SelectField name="type" label="Pallet type" placeholder="Type" options={products.map((p) => p.name)} />
           </div>
 
-          <label className="sr-only" htmlFor="q-method">Pickup or delivery</label>
-          <select id="q-method" name="method" defaultValue="" className={field}>
-            <option value="">Pallet Pickup or Delivery?</option>
-            <option>Pickup</option>
-            <option>Delivery</option>
-          </select>
+          <SelectField
+            name="method"
+            label="Pickup or delivery"
+            placeholder="Pallet Pickup or Delivery?"
+            options={["Pickup", "Delivery"]}
+          />
 
           <label className="sr-only" htmlFor="q-notes">Notes</label>
           <textarea id="q-notes" name="notes" rows={4} placeholder="Notes (timing, delivery details, etc.)" className={field} />
