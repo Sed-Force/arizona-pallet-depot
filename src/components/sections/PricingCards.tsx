@@ -55,10 +55,10 @@ export function PricingCards() {
           <ul className="mt-4 grid gap-3 sm:grid-cols-3">
             {bulkTiers.map((tier) => (
               <li
-                key={tier.over}
+                key={tier.minQty}
                 className="flex flex-col rounded-lg border border-primary/20 bg-primary-soft p-4"
               >
-                <p className="text-sm font-semibold text-link">Over {tier.over} pallets</p>
+                <p className="text-sm font-semibold text-link">{tier.minQty}+ pallets</p>
                 {tier.discountPerPallet !== undefined ? (
                   <>
                     <p className="mt-1 text-3xl font-extrabold">{formatUsd(tier.discountPerPallet)} off</p>

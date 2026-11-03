@@ -83,17 +83,17 @@ export const products: Product[] = [
 ];
 
 export type BulkTier = {
-  /** The tier applies to orders of more than this many pallets. */
-  over: number;
+  /** The tier applies to orders of at least this many pallets. */
+  minQty: number;
   /** Dollars off every pallet in the order. Omit for a "call for best rates" tier. */
   discountPerPallet?: number;
 };
 
-// Ascending by `over`. Drives the pricing card and the calculator/PayPal totals (lib/pricing.ts).
+// Ascending by `minQty`. Drives the pricing card and the calculator/PayPal totals (lib/pricing.ts).
 export const bulkTiers: BulkTier[] = [
-  { over: 50, discountPerPallet: 1 },
-  { over: 100, discountPerPallet: 2 },
-  { over: 200 },
+  { minQty: 50, discountPerPallet: 1 },
+  { minQty: 100, discountPerPallet: 2 },
+  { minQty: 200 },
 ];
 
 export type Faq = { question: string; answer: string };

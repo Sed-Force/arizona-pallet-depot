@@ -92,7 +92,7 @@ export function PalletCalculator() {
               </div>
               <div className="flex justify-between gap-4 text-success-foreground">
                 <dt>
-                  Bulk discount (over {tier.over}): −{formatUsd(order.discountPerPallet)}/pallet
+                  Bulk discount ({tier.minQty}+): −{formatUsd(order.discountPerPallet)}/pallet
                 </dt>
                 <dd>−{formatUsd(order.savings)}</dd>
               </div>
@@ -101,7 +101,7 @@ export function PalletCalculator() {
           <p className="text-lg font-bold text-primary">Total: {formatUsd(order.total)}</p>
           {nextTier?.discountPerPallet !== undefined && (
             <p className="mt-1 text-sm text-muted">
-              Order {nextTier.over + 1 - qty} more to save {formatUsd(nextTier.discountPerPallet)} on every pallet.
+              Order {nextTier.minQty - qty} more to save {formatUsd(nextTier.discountPerPallet)} on every pallet.
             </p>
           )}
           {qualifiesForCallRate(qty) && (
