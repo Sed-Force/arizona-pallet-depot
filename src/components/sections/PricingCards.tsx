@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { formatUsd } from "@/lib/pricing";
 import { bulkTiers, links, products, site } from "@/lib/site";
 
 function Price({ children, unit }: { children: React.ReactNode; unit?: string }) {
@@ -54,16 +55,23 @@ export function PricingCards() {
           <ul className="mt-4 grid gap-3 sm:grid-cols-3">
             {bulkTiers.map((tier) => (
               <li
-                key={tier.label}
+                key={tier.over}
                 className="flex flex-col rounded-lg border border-primary/20 bg-primary-soft p-4"
               >
-                <p className="text-sm font-semibold text-link">{tier.label}</p>
-                <p className="mt-1 text-3xl font-extrabold">{tier.deal}</p>
-                <p className="text-sm text-muted">{tier.detail}</p>
-                {tier.callForPrice && (
-                  <ButtonLink href={links.tel} size="sm" className="mt-3 self-start">
-                    Call {site.phone.display}
-                  </ButtonLink>
+                <p className="text-sm font-semibold text-link">Over {tier.over} pallets</p>
+                {tier.discountPerPallet !== undefined ? (
+                  <>
+                    <p className="mt-1 text-3xl font-extrabold">{formatUsd(tier.discountPerPallet)} off</p>
+                    <p className="text-sm text-muted">per pallet</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="mt-1 text-3xl font-extrabold">Call</p>
+                    <p className="text-sm text-muted">for our best rates</p>
+                    <ButtonLink href={links.tel} size="sm" className="mt-3 self-start">
+                      Call {site.phone.display}
+                    </ButtonLink>
+                  </>
                 )}
               </li>
             ))}

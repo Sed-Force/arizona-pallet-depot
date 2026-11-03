@@ -6,11 +6,10 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { useRouter } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { links, products, type Product } from "@/lib/site";
+import { discountTierFor, formatUsd, nextDiscountTier, priceOrder, qualifiesForCallRate } from "@/lib/pricing";
+import { links, products, site, type Product } from "@/lib/site";
 
 const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
-
-const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 
 function clampQty(value: number) {
   return Number.isFinite(value) ? Math.max(1, Math.floor(value)) : 1;
@@ -23,7 +22,9 @@ export function PalletCalculator() {
   const [paid, setPaid] = useState(false);
 
   const product = products.find((p) => p.id === productId) ?? products[0];
-  const total = qty * product.price;
+  const order = priceOrder(product.price, qty);
+  const tier = discountTierFor(qty);
+  const nextTier = nextDiscountTier(qty);
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
@@ -80,9 +81,36 @@ export function PalletCalculator() {
           </div>
         </div>
 
-        <p className="mt-5 text-lg font-bold text-primary" aria-live="polite">
-          Total: {currency.format(total)}
-        </p>
+        <div className="mt-5" aria-live="polite">
+          {tier && (
+            <dl className="mb-2 space-y-1 text-sm text-muted">
+              <div className="flex justify-between gap-4">
+                <dt>
+                  {qty} × {formatUsd(product.price)}
+                </dt>
+                <dd>{formatUsd(order.subtotal)}</dd>
+              </div>
+              <div className="flex justify-between gap-4 text-success-foreground">
+                <dt>
+                  Bulk discount (over {tier.over}): −{formatUsd(order.discountPerPallet)}/pallet
+                </dt>
+                <dd>−{formatUsd(order.savings)}</dd>
+              </div>
+            </dl>
+          )}
+          <p className="text-lg font-bold text-primary">Total: {formatUsd(order.total)}</p>
+          {nextTier?.discountPerPallet !== undefined && (
+            <p className="mt-1 text-sm text-muted">
+              Order {nextTier.over + 1 - qty} more to save {formatUsd(nextTier.discountPerPallet)} on every pallet.
+            </p>
+          )}
+          {qualifiesForCallRate(qty) && (
+            <p className="mt-2 rounded-lg border border-primary/20 bg-primary-soft p-3 text-sm text-body">
+              Ordering this many? <a href={links.tel} className="font-semibold text-link underline">Call {site.phone.display}</a>{" "}
+              — we may be able to beat this price.
+            </p>
+          )}
+        </div>
 
         <p className="mt-3 text-xs text-subtle">
           Pickup preferred (Gilbert). Delivery/LTL by quote. Payments here don’t schedule pickup automatically — call or
@@ -115,8 +143,8 @@ export function PalletCalculator() {
                     purchase_units: [
                       {
                         description: product.schemaName,
-                        custom_id: `qty:${qty}|unit:${product.price}`,
-                        amount: { currency_code: "USD", value: total.toFixed(2) },
+                        custom_id: `qty:${qty}|unit:${product.price}|discount:${order.discountPerPallet}`,
+                        amount: { currency_code: "USD", value: order.total.toFixed(2) },
                       },
                     ],
                   })
