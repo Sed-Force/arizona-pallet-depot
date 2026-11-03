@@ -2,6 +2,7 @@ import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { QuantityField } from "@/components/ui/QuantityField";
 import { SelectField } from "@/components/ui/SelectField";
 import { links, products, site } from "@/lib/site";
 
@@ -30,7 +31,7 @@ export function QuoteForm() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="sr-only" htmlFor="q-qty">Quantity</label>
-            <input id="q-qty" name="quantity" type="number" min={1} inputMode="numeric" placeholder="Quantity" className={field} />
+            <QuantityField id="q-qty" name="quantity" placeholder="Quantity" />
             <SelectField name="type" label="Pallet type" placeholder="Type" options={products.map((p) => p.name)} />
           </div>
 
