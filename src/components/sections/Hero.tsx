@@ -50,8 +50,9 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
             <div
               className={
                 actions.length === 3
-                  ? // Three actions: stacked on mobile, first-over-pair on sm–md, one row on lg+.
-                    "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-[auto_1fr_1fr]"
+                  ? // Three actions: stacked on mobile, one row on sm, first-over-pair on md
+                    // (where the hero splits into two columns), one row again on lg+.
+                    "mt-6 grid gap-3 sm:grid-cols-[auto_1fr_1fr] md:grid-cols-2 lg:grid-cols-[auto_1fr_1fr]"
                   : "mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
               }
             >
@@ -60,7 +61,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
                   key={a.label}
                   href={a.href}
                   variant={a.variant ?? "primary"}
-                  className={cn("whitespace-nowrap", actions.length === 3 && i === 0 && "sm:col-span-2 lg:col-span-1")}
+                  className={cn("whitespace-nowrap", actions.length === 3 && i === 0 && "md:col-span-2 lg:col-span-1")}
                 >
                   {a.label}
                 </ButtonLink>
