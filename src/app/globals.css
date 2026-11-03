@@ -49,6 +49,19 @@
   --color-warning-soft: var(--color-amber-50);
   --color-warning-border: var(--color-amber-200);
   --color-warning-foreground: var(--color-amber-900);
+
+  /* Endless horizontal scroll (animate-marquee). The track holds its content twice, so moving it
+     left by half its width lands on an identical frame and the loop has no visible seam. */
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 .dark {

@@ -15,13 +15,15 @@ type HeroProps = {
   description?: React.ReactNode;
   actions?: HeroAction[];
   image?: { src: string; alt: string };
-  /** Extra content under the actions (e.g. trust badges). */
+  /** Extra content under the actions. */
   children?: React.ReactNode;
+  /** Full-bleed content along the bottom edge of the hero, outside the content column (e.g. TrustBadges). */
+  footer?: React.ReactNode;
   /** Image heroes use the full page heading size; text-only heroes are more compact. */
   compact?: boolean;
 };
 
-export function Hero({ title, eyebrow, description, actions, image, children, compact }: HeroProps) {
+export function Hero({ title, eyebrow, description, actions, image, children, footer, compact }: HeroProps) {
   return (
     <section className="bg-gradient-to-b from-surface to-background">
       <Container
@@ -85,6 +87,7 @@ export function Hero({ title, eyebrow, description, actions, image, children, co
           </div>
         )}
       </Container>
+      {footer}
     </section>
   );
 }

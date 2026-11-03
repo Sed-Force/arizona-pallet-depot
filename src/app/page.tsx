@@ -35,9 +35,8 @@ export default function HomePage() {
           { label: "Call Now", href: links.tel },
         ]}
         image={{ src: "/images/pallet-4.jpg", alt: "Used 48x40 Plastic pallets for sale in Phoenix AZ" }}
-      >
-        <TrustBadges />
-      </Hero>
+        footer={<TrustBadges />}
+      />
 
       <FeatureGrid
         title="What We Carry"
