@@ -82,6 +82,22 @@ export const products: Product[] = [
   },
 ];
 
+export type BulkTier = {
+  /** Order size the tier applies to, shown as the tier's heading. */
+  label: string;
+  /** Headline deal, e.g. "$1.00 off". */
+  deal: string;
+  detail: string;
+  /** Tiers without a fixed discount send buyers to call instead. */
+  callForPrice?: boolean;
+};
+
+export const bulkTiers: BulkTier[] = [
+  { label: "Over 50 pallets", deal: "$1.00 off", detail: "per pallet" },
+  { label: "Over 100 pallets", deal: "$2.00 off", detail: "per pallet" },
+  { label: "Over 200 pallets", deal: "Call", detail: "for our best rates", callForPrice: true },
+];
+
 export type Faq = { question: string; answer: string };
 
 export const faqs: Faq[] = [

@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { products } from "@/lib/site";
+import { bulkTiers, links, products, site } from "@/lib/site";
 
 function Price({ children, unit }: { children: React.ReactNode; unit?: string }) {
   return (
@@ -46,10 +47,27 @@ export function PricingCards() {
           </Card>
         ))}
 
-        <Card className="flex flex-col justify-center sm:col-span-2">
+        <Card className="sm:col-span-2">
           <h3 className="font-semibold">Bulk / Custom</h3>
-          <Price>Call</Price>
-          <p className="mt-1 text-sm text-muted">Best rates on 200+ units</p>
+          <p className="mt-1 text-sm text-muted">The more you order, the more you save.</p>
+
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+            {bulkTiers.map((tier) => (
+              <li
+                key={tier.label}
+                className="flex flex-col rounded-lg border border-primary/20 bg-primary-soft p-4"
+              >
+                <p className="text-sm font-semibold text-link">{tier.label}</p>
+                <p className="mt-1 text-3xl font-extrabold">{tier.deal}</p>
+                <p className="text-sm text-muted">{tier.detail}</p>
+                {tier.callForPrice && (
+                  <ButtonLink href={links.tel} size="sm" className="mt-3 self-start">
+                    Call {site.phone.display}
+                  </ButtonLink>
+                )}
+              </li>
+            ))}
+          </ul>
         </Card>
       </div>
 
