@@ -32,6 +32,18 @@ src/
 - **Nav links:** `navItems` in `src/lib/site.ts` (used by navbar and footer)
 - **New blog post:** add a component in `src/content/posts/`, then its metadata to `posts` and the component to `postContent` in `src/content/posts.ts`
 
+## Icons
+
+[Material UI icons](https://mui.com/material-ui/material-icons/) (`@mui/icons-material`) are available. Import each icon by path, and size or color it with Tailwind classes:
+
+```tsx
+import PhoneIcon from "@mui/icons-material/Phone";
+
+<PhoneIcon className="!text-xl text-blue-600" aria-hidden />
+```
+
+Icons inherit the surrounding text color. MUI's styles are emitted into a CSS `@layer mui` that sits below Tailwind's utilities (`globals.css`), so Tailwind classes override them. Font-size utilities still need `!` because MUI sets icon size through its own class. The `AppRouterCacheProvider` in `app/layout.tsx` renders those styles on the server.
+
 ## Before launch
 
 - Set the real Formspree ID in `site.quoteFormAction` (`src/lib/site.ts`) — it's still the `yourFormID` placeholder from the original site.
