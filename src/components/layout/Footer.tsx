@@ -8,12 +8,17 @@ import { CurrentYear } from "./CurrentYear";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3">
         <div className="sm:col-span-2 lg:col-span-1">
           <Logo />
           <p className="mt-3 max-w-xs text-sm text-muted">
             Used 48×40 plastic pallets for the Phoenix metro. Pickup in Gilbert by appointment; delivery by quote.
           </p>
+          {/* CTAs sit under the brand blurb, keeping wide screens to three columns. */}
+          <div className="mt-5 flex flex-wrap gap-3">
+            <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
+            <ButtonLink href={links.quote} size="md" variant="secondary">Request Pricing</ButtonLink>
+          </div>
         </div>
 
         <div>
@@ -42,11 +47,6 @@ export function Footer() {
             </li>
             <li><strong>Pickup:</strong> {site.pickup.location}</li>
           </ul>
-        </div>
-
-        <div className="flex flex-wrap content-start gap-3 lg:justify-end">
-          <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
-          <ButtonLink href={links.quote} size="md" variant="secondary">Request Pricing</ButtonLink>
         </div>
       </Container>
 
