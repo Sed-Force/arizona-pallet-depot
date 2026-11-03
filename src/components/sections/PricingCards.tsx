@@ -25,7 +25,8 @@ export function PricingCards() {
         }
       />
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Product cards side by side from sm up; Bulk / Custom spans the full row beneath. */}
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {products.map((p) => (
           <Card key={p.id} padded={false} className="flex flex-col overflow-hidden">
             <div className="relative aspect-[4/3] bg-surface-3">
@@ -33,7 +34,7 @@ export function PricingCards() {
                 src={p.image}
                 alt={p.imageAlt}
                 fill
-                sizes="(min-width: 1024px) 370px, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -45,7 +46,7 @@ export function PricingCards() {
           </Card>
         ))}
 
-        <Card className="flex flex-col justify-center sm:col-span-2 lg:col-span-1">
+        <Card className="flex flex-col justify-center sm:col-span-2">
           <h3 className="font-semibold">Bulk / Custom</h3>
           <Price>Call</Price>
           <p className="mt-1 text-sm text-muted">Best rates on 200+ units</p>
