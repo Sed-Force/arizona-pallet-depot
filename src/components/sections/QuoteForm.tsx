@@ -57,8 +57,10 @@ export function QuoteForm() {
         </p>
       </div>
 
+      {/* The column stretches to the form's height, giving the sticky card room to travel.
+          top-24 clears the 4rem sticky navbar with a 2rem gap. */}
       <div className="md:pt-14">
-        <Card className="rounded-2xl">
+        <Card className="rounded-2xl md:sticky md:top-24">
           <h3 className="font-semibold">Pickup</h3>
           <p className="mt-2 text-body">{site.pickup.location}</p>
           <p className="mt-4 text-sm text-muted">Hours: {site.pickup.hours}</p>
