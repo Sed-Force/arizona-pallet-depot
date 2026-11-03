@@ -25,7 +25,8 @@ type HeroProps = {
 
 export function Hero({ title, eyebrow, description, actions, image, children, footer, compact }: HeroProps) {
   return (
-    <section className="bg-gradient-to-b from-surface to-background">
+    // data-hero: MobileActionBar stays hidden until this section scrolls out of view.
+    <section data-hero className="bg-gradient-to-b from-surface to-background">
       <Container
         className={
           image
