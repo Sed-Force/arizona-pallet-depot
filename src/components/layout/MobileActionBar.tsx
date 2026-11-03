@@ -47,9 +47,10 @@ export function MobileActionBar() {
         visible ? "translate-y-0" : "translate-y-full",
       )}
     >
+      {/* Primary action on the right, nearest a right-handed thumb (matches the hero's CTA order). */}
       <div className="flex gap-3 px-4 pt-3">
-        <ButtonLink href={links.tel} className="flex-1">Call</ButtonLink>
         <ButtonLink href={links.quote} variant="secondary" className="flex-1">Quote</ButtonLink>
+        <ButtonLink href={links.tel} className="flex-1">Call</ButtonLink>
       </div>
     </div>
   );
