@@ -1,0 +1,119 @@
+/* MUI styles live in the `mui` layer (see layout.tsx), ordered before utilities so Tailwind classes win. */
+@layer theme, base, mui, components, utilities;
+@import "tailwindcss";
+
+/* `dark:` utilities follow the `.dark` class on <html> (set by ThemeToggle), not the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Theme tokens. Each becomes a Tailwind color utility, e.g. --color-surface → bg-surface,
+ * --color-body → text-body, --color-border → border-border. Light values are the defaults;
+ * the `.dark` block below overrides them. Use these instead of raw palette colors.
+ */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Backgrounds */
+  --color-background: var(--color-slate-50); /* page */
+  --color-surface: var(--color-white); /* cards, header, white bands */
+  --color-surface-2: var(--color-slate-100); /* subtle fills, hover */
+  --color-surface-3: var(--color-slate-200); /* image placeholders, stronger hover */
+
+  /* Text, strongest to faintest */
+  --color-foreground: var(--color-slate-900); /* headings, emphasis */
+  --color-foreground-2: var(--color-slate-800); /* nav links */
+  --color-body: var(--color-slate-700); /* paragraphs */
+  --color-muted: var(--color-slate-600); /* secondary text */
+  --color-subtle: var(--color-slate-500); /* eyebrows, meta */
+  --color-faint: var(--color-slate-400); /* decorative */
+
+  /* Borders */
+  --color-border: var(--color-slate-200);
+  --color-border-strong: var(--color-slate-300); /* inputs, outlined buttons */
+
+  /* Brand */
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-700);
+  --color-on-primary: var(--color-white); /* text on primary */
+  --color-primary-soft: var(--color-blue-50); /* callout backgrounds */
+  --color-link: var(--color-blue-700); /* links, active nav item */
+
+  /* Inverse (dark button in light mode) */
+  --color-inverse: var(--color-slate-900);
+  --color-on-inverse: var(--color-white);
+
+  /* Status */
+  --color-success-soft: var(--color-green-50);
+  --color-success-border: var(--color-green-200);
+  --color-success-foreground: var(--color-green-800);
+  --color-warning-soft: var(--color-amber-50);
+  --color-warning-border: var(--color-amber-200);
+  --color-warning-foreground: var(--color-amber-900);
+
+  /* Endless horizontal scroll (animate-marquee). The track holds its content twice, so moving it
+     left by half its width lands on an identical frame and the loop has no visible seam. */
+  --animate-marquee: marquee 240s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.dark {
+  color-scheme: dark; /* native form controls and scrollbars */
+
+  --color-background: var(--color-slate-950);
+  --color-surface: var(--color-slate-900);
+  --color-surface-2: var(--color-slate-800);
+  --color-surface-3: var(--color-slate-700);
+
+  --color-foreground: var(--color-slate-50);
+  --color-foreground-2: var(--color-slate-200);
+  --color-body: var(--color-slate-300);
+  --color-muted: var(--color-slate-400);
+  --color-subtle: var(--color-slate-400);
+  --color-faint: var(--color-slate-500);
+
+  --color-border: var(--color-slate-800);
+  --color-border-strong: var(--color-slate-700);
+
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-500);
+  --color-on-primary: var(--color-white);
+  --color-primary-soft: color-mix(in oklab, var(--color-blue-500) 15%, transparent);
+  --color-link: var(--color-blue-400);
+
+  --color-inverse: var(--color-slate-100);
+  --color-on-inverse: var(--color-slate-900);
+
+  --color-success-soft: color-mix(in oklab, var(--color-green-500) 15%, transparent);
+  --color-success-border: var(--color-green-800);
+  --color-success-foreground: var(--color-green-300);
+  --color-warning-soft: color-mix(in oklab, var(--color-amber-500) 15%, transparent);
+  --color-warning-border: var(--color-amber-800);
+  --color-warning-foreground: var(--color-amber-200);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* One placeholder color for every field, matching SelectField's empty state (text-subtle).
+   Replaces Tailwind preflight's 50%-of-text-color default; in the base layer so utilities still win. */
+@layer base {
+  ::placeholder {
+    color: var(--color-subtle);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
