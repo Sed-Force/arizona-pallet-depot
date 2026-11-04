@@ -14,12 +14,16 @@ const fulfillmentOptions = [
   { value: "delivery", label: "Delivery", detail: "To your site, Phoenix metro", Icon: LocalShippingIcon },
 ] as const;
 
-/** Tomorrow in the visitor's local time, as YYYY-MM-DD for a date input's `min`. */
-function tomorrow() {
+/** A date `days` from today in the visitor's local time, as YYYY-MM-DD for a date input's `min`/`max`. */
+function daysFromToday(days: number) {
   const d = new Date();
-  d.setDate(d.getDate() + 1);
+  d.setDate(d.getDate() + days);
   return [d.getFullYear(), String(d.getMonth() + 1).padStart(2, "0"), String(d.getDate()).padStart(2, "0")].join("-");
 }
+
+const tomorrow = () => daysFromToday(1);
+// Without a `max`, browsers let the year run to six digits ("202612"); a 4-digit max caps it at four.
+const oneYearOut = () => daysFromToday(365);
 
 const noSubscribe = () => () => {};
 
@@ -39,6 +43,7 @@ export function FulfillmentFields({ idPrefix, disabled, dateRequired }: Fulfillm
   const [fulfillment, setFulfillment] = useState<Fulfillment>("pickup");
   // Computed in the browser only: the server's timezone can be a day ahead of the visitor's.
   const minDate = useSyncExternalStore(noSubscribe, tomorrow, () => undefined);
+  const maxDate = useSyncExternalStore(noSubscribe, oneYearOut, () => undefined);
   const dateId = `${idPrefix}-date`;
 
   return (
@@ -48,7 +53,7 @@ export function FulfillmentFields({ idPrefix, disabled, dateRequired }: Fulfillm
         <label htmlFor={dateId} className="text-sm font-semibold">
           Service date{!dateRequired && <span className="font-normal text-muted"> (optional)</span>}
         </label>
-        <input id={dateId} required={dateRequired} name="requested_date" type="date" min={minDate} className={field} />
+        <input id={dateId} required={dateRequired} name="requested_date" type="date" min={minDate} max={maxDate} className={field} />
       </div>
 
       <RadioGroup
