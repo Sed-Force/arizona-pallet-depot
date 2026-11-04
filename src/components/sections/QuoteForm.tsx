@@ -2,11 +2,13 @@ import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PhoneField } from "@/components/ui/PhoneField";
 import { QuantityField } from "@/components/ui/QuantityField";
 import { SelectField } from "@/components/ui/SelectField";
+import { fieldClasses as field } from "@/components/ui/fieldClasses";
+import { FulfillmentFields } from "./FulfillmentFields";
+import { QuoteRequestForm } from "./QuoteRequestForm";
 import { links, products, site } from "@/lib/site";
-
-const field = "w-full rounded-lg border border-border-strong bg-surface px-3 py-2.5 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20";
 
 export function QuoteForm() {
   return (
@@ -17,13 +19,13 @@ export function QuoteForm() {
           description="Tell us what you need — we’ll confirm availability and price."
         />
 
-        <form action={site.quoteFormAction} method="POST" className="mt-6 grid gap-4">
-          <input type="hidden" name="_next" value={`${site.url}/thanks`} />
+        {/* Sends to Formspree, which emails the request to us; see QuoteRequestForm. */}
+        <QuoteRequestForm className="mt-6 grid min-w-0 gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="sr-only" htmlFor="q-name">Your name</label>
             <input id="q-name" required name="name" placeholder="Your name" autoComplete="name" className={field} />
             <label className="sr-only" htmlFor="q-phone">Phone</label>
-            <input id="q-phone" required name="phone" type="tel" placeholder="Phone" autoComplete="tel" className={field} />
+            <PhoneField id="q-phone" name="phone" required />
           </div>
 
           <label className="sr-only" htmlFor="q-email">Email</label>
@@ -31,16 +33,11 @@ export function QuoteForm() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="sr-only" htmlFor="q-qty">Quantity</label>
-            <QuantityField id="q-qty" name="quantity" placeholder="Quantity" />
             <SelectField name="type" label="Pallet type" placeholder="Type" options={products.map((p) => p.name)} />
+            <QuantityField id="q-qty" name="quantity" placeholder="Quantity" />
           </div>
 
-          <SelectField
-            name="method"
-            label="Pickup or delivery"
-            placeholder="Pallet Pickup or Delivery?"
-            options={["Pickup", "Delivery"]}
-          />
+          <FulfillmentFields idPrefix="q" />
 
           <label className="sr-only" htmlFor="q-notes">Notes</label>
           <textarea id="q-notes" name="notes" rows={4} placeholder="Notes (timing, delivery details, etc.)" className={field} />
@@ -48,28 +45,64 @@ export function QuoteForm() {
           <button type="submit" className={buttonClasses("primary", "lg", "w-full sm:w-auto sm:justify-self-start")}>
             Send Request
           </button>
-        </form>
-
-        <p className="mt-4 text-sm text-muted">
-          Prefer to talk?{" "}
-          <a href={links.tel} className="font-semibold underline">Call {site.phone.display}</a> or{" "}
-          <a href={links.sms} className="font-semibold underline">text us</a>.
-        </p>
+        </QuoteRequestForm>
       </div>
 
       {/* The column stretches to the form's height, giving the sticky card room to travel.
           top-24 clears the 4rem sticky navbar with a 2rem gap. */}
-      <div className="md:pt-14">
-        <Card className="rounded-2xl md:sticky md:top-24">
-          <h3 className="font-semibold">Pickup</h3>
-          <p className="mt-2 text-body">{site.pickup.location}</p>
-          <p className="mt-4 text-sm text-muted">Hours: {site.pickup.hours}</p>
-          <p className="mt-1 text-sm break-words text-muted">
-            Email: <a className="underline" href={links.mailto}>{site.email}</a>
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
-            <ButtonLink href={links.sms} size="md" variant="secondary">Text Us</ButtonLink>
+      <div className="">
+        <Card className="rounded-2xl md:sticky md:top-24 bg-surface-2 flex flex-col gap-4">
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold">
+              Operating Hours
+            </h3>
+
+            <ul className="list-disc pl-4 text-body">
+              <li>
+                {site.pickup.operation.startDay} - {site.pickup.operation.endDay}, {site.pickup.operation.startTime} - {site.pickup.operation.endTime}
+              </li>
+              <li>
+                {site.pickup.operation.flexDay} {site.pickup.operation.note}
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold">
+              Pickup Available
+            </h3>
+            <p className="mt-2 text-body">In {site.pickup.location} {site.pickup.operation.note}</p>
+          </div>
+
+          <div className="flex flex-col">
+            <p className="text-lg font-semibold">
+              Contact Us Directly
+            </p>
+
+            <div className="flex flex-col gap-2">
+              <p className="mt-2 text-body">
+                Email: <a className="hover:text-link" href={links.mailto}>{site.email}</a>
+              </p>
+
+              {/* <div className="flex flex-row flex-wrap gap-4">
+                <ButtonLink 
+                  href={links.sms}
+                  size="md"
+                  variant="secondary"
+                  className="flex-1"
+                >
+                  Text Us
+                </ButtonLink>
+                
+                <ButtonLink
+                  href={links.tel}
+                  size="md"
+                  className="flex-1"
+                >
+                  Call Now
+                </ButtonLink>
+              </div> */}
+            </div>
           </div>
         </Card>
       </div>

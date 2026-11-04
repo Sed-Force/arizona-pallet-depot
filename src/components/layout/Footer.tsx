@@ -8,51 +8,60 @@ import { CurrentYear } from "./CurrentYear";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="sm:col-span-2 lg:col-span-1">
+      <Container className="grid gap-10 py-12 md:grid-cols-3 w-full">
+        <div className="flex flex-col gap-4 items-center md:items-start justify-center md:justify-start">
           <Logo />
-          <p className="mt-3 max-w-xs text-sm text-muted">
-            Used 48×40 plastic pallets for the Phoenix metro. Pickup in Gilbert by appointment; delivery by quote.
+          <p className="w-full text-sm text-muted text-center md:text-left">
+            Used 48×40 plastic pallets for the Phoenix metro valley.
           </p>
-          {/* CTAs sit under the brand blurb, keeping wide screens to three columns. */}
-          <div className="mt-5 flex flex-wrap gap-3">
-            <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
-            <ButtonLink href={links.quote} size="md" variant="secondary">Request Pricing</ButtonLink>
-          </div>
         </div>
 
-        <div>
-          <h2 className="text-sm font-semibold tracking-wide text-subtle uppercase">Explore</h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="text-body hover:text-link">
-                  {item.label}
-                </Link>
+        {/* Contact and Explore share one grid item, so it spans the remaining two of the three columns. */}
+        <div className="flex flex-col sm:grid sm:grid-cols-2 md:col-span-2 w-full gap-8 items-center sm:items-start justify-center md:justify-start">
+          <div className="flex flex-col gap-2 items-center sm:items-start justify-center sm:justify-start md:h-full">
+            <h2 className="text-sm font-bold tracking-wide uppercase">
+              Contact
+            </h2>
+            
+            <ul className="text-body flex flex-col items-center sm:items-start justify-center sm:justify-start gap-2">
+              <li>
+                <strong>Call:</strong>{" "}
+                <a className="hover:text-link" href={links.tel}>{site.phone.display}</a>
               </li>
-            ))}
-          </ul>
-        </div>
 
-        <div className="text-sm text-body">
-          <h2 className="text-sm font-semibold tracking-wide text-subtle uppercase">Contact</h2>
-          <ul className="mt-3 space-y-2">
-            <li>
-              <strong>Call:</strong>{" "}
-              <a className="underline hover:text-link" href={links.tel}>{site.phone.display}</a>
-            </li>
-            <li className="break-words">
-              <strong>Email:</strong>{" "}
-              <a className="underline hover:text-link" href={links.mailto}>{site.email}</a>
-            </li>
-            <li><strong>Pickup:</strong> {site.pickup.location}</li>
-          </ul>
+              <li>
+                <strong>Email:</strong>{" "}
+                <a className="hover:text-link" href={links.mailto}>{site.email}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-2 items-center sm:items-end justify-center sm:justify-end">
+            <h2 className="text-sm font-bold tracking-wide uppercase">
+              Explore
+            </h2>
+            
+            <ul className="flex flex-col items-center sm:items-end justify-center sm:justify-end gap-2">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-body hover:text-link text-center sm:text-right">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Container>
 
       <div className="border-t border-border">
-        <Container className="py-5 text-sm text-muted">
+        <Container className="py-2 text-sm text-muted text-center md:text-left md:flex flex-row items-center">
           © <CurrentYear /> {site.name}. All rights reserved.
+
+          <div className="hidden md:flex flex-1 flex-row gap-4 justify-end w-full">
+            <ButtonLink href={links.quote} size="md" variant="secondary">Get a Quote</ButtonLink>
+            <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
+          </div>
         </Container>
       </div>
     </footer>

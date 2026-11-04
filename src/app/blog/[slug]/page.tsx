@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/blog/PostCard";
 import { Prose } from "@/components/blog/Prose";
 import { CtaPanel } from "@/components/sections/CtaPanel";
-import { Hero } from "@/components/sections/Hero";
+import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -37,7 +38,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
-    <>
+    <div className="w-full">
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -57,30 +58,49 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
         }}
       />
 
-      <Hero
-        eyebrow={post.eyebrow}
-        title={post.title}
-        description={<p>{post.heroLead}</p>}
-        actions={[
-          { label: "Get a Quote", href: links.quote },
-          { label: `Call ${site.phone.display}`, href: links.tel, variant: "secondary" },
-        ]}
-        image={{ src: post.image, alt: post.heroImageAlt }}
-      />
+      {/* Wide screens: three columns, the post's text in the first two and the featured image alone in
+          the third, sticky. Below lg the image leads and everything stacks. The -mt-16/pt-16 and gradient
+          match the shared Hero, which can't be used here because its text and image share one row. */}
+      <div className="-mt-16 bg-gradient-to-b from-surface to-background pt-16">
+        <Container className="grid gap-8 py-8 md:py-12 lg:grid-cols-3 lg:gap-10">
+          <div className="min-w-0 lg:col-span-2">
+            {/* data-hero: MobileActionBar stays hidden until this header scrolls out of view. */}
+            <header data-hero>
+              <nav aria-label="Breadcrumb" className="mb-4 text-sm text-subtle font-bold">
+                <Link href="/" className="hover:text-link">Home</Link> /{" "}
+                <Link href="/blog" className="hover:text-link">Blog</Link>
+              </nav>
+              {post.eyebrow && <p className="text-sm text-subtle">{post.eyebrow}</p>}
+              <h1 className="text-3xl leading-tight font-extrabold text-balance sm:text-4xl lg:text-5xl">{post.title}</h1>
+              <p className="mt-4 text-lg text-body">{post.heroLead}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <ButtonLink href={links.quote} variant="secondary">Get a Quote</ButtonLink>
+                <ButtonLink href={links.tel}>Call Now</ButtonLink>
+              </div>
+            </header>
 
-      <Container size="narrow" className="py-8 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-4 text-sm text-subtle">
-          <Link href="/" className="hover:underline">Home</Link> /{" "}
-          <Link href="/blog" className="hover:underline">Blog</Link>
-        </nav>
-        <Card className="md:p-8">
-          <article>
-            <Prose>
-              <Content />
-            </Prose>
-          </article>
-        </Card>
-      </Container>
+            <article className="mt-8 md:mt-10">
+              <Prose>
+                <Content />
+              </Prose>
+            </article>
+          </div>
+
+          {/* self-start keeps the column its own height so the image can travel; top-24 clears the navbar. */}
+          <aside className="order-first lg:order-none lg:sticky lg:top-24 lg:self-start">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-surface-3 lg:aspect-[4/5]">
+              <Image
+                src={post.image}
+                alt={post.heroImageAlt}
+                fill
+                priority
+                sizes="(min-width: 1152px) 360px, (min-width: 1024px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </aside>
+        </Container>
+      </div>
 
       {related.length > 0 && (
         <Container className="pb-4">
@@ -97,6 +117,6 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
         title="Need pallets this week?"
         description="Tell us your quantity and timing—we’ll confirm availability, pickup or delivery options, and pricing."
       />
-    </>
+    </div>
   );
 }

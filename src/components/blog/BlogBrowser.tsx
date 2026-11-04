@@ -30,9 +30,9 @@ export function BlogBrowser({ posts }: BlogBrowserProps) {
               aria-pressed={category === c}
               onClick={() => setCategory(c)}
               className={cn(
-                "rounded-full border px-3 py-1 text-sm transition-colors",
+                "rounded-full border px-3 py-1 text-sm transition-colors hover:cursor-pointer",
                 category === c
-                  ? "border-primary bg-primary text-on-primary"
+                  ? "border-primary bg-primary text-on-primary hover:bg-primary-hover"
                   : "border-border-strong bg-background hover:bg-surface-2",
               )}
             >

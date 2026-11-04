@@ -6,7 +6,7 @@ export function PostCard({ post }: { post: PostMeta }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col rounded-2xl border border-border bg-surface p-4 transition-shadow hover:shadow-md sm:p-5"
+      className="group flex flex-col rounded-2xl border border-border bg-surface p-4 transition-shadow hover:shadow-md sm:p-5 hover:cursor-pointer hover:border-primary hover:text-on-primary transform duration-300"
     >
       <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-surface-3">
         <Image
@@ -19,7 +19,7 @@ export function PostCard({ post }: { post: PostMeta }) {
       </div>
       <div className="mt-4 flex flex-1 flex-col">
         <p className="text-xs tracking-wide text-subtle uppercase">{post.category}</p>
-        <h2 className="mt-1 text-xl font-semibold group-hover:underline">{post.cardTitle ?? post.title}</h2>
+        <h2 className="mt-1 text-xl font-semibold group-hover:text-link">{post.cardTitle ?? post.title}</h2>
         <p className="mt-2 text-body">{post.excerpt}</p>
         <p className="mt-auto pt-3 text-sm text-subtle">{post.readingTime}</p>
       </div>

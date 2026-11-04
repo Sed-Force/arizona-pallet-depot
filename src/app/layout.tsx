@@ -11,7 +11,7 @@ import "./globals.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 const defaultDescription =
-  "Buy used 48×40 composite pallets from $15 in Phoenix & Gilbert. Value & Industrial Grade. Pickup by appointment; delivery by quote. Call 602-644-0600.";
+  `Buy used 48×40 composite pallets from $15 in Phoenix & Gilbert. Value & Industrial Grade. Pickup by appointment; delivery by quote. Call ${site.phone.display}.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-dvh flex-col bg-background pb-[calc(76px+env(safe-area-inset-bottom))] font-sans text-foreground md:pb-0">
         <a
           href="#main"
-          className="sr-only z-50 rounded-lg bg-surface px-4 py-2 font-semibold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+          className="sr-only z-1001 rounded-lg bg-surface px-4 py-2 font-semibold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
         >
           Skip to content
         </a>

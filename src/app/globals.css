@@ -52,7 +52,7 @@
 
   /* Endless horizontal scroll (animate-marquee). The track holds its content twice, so moving it
      left by half its width lands on an identical frame and the loop has no visible seam. */
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 240s linear infinite;
 
   @keyframes marquee {
     from {
@@ -101,6 +101,15 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* One placeholder color for every field, matching SelectField's empty state (text-subtle).
+   Replaces Tailwind preflight's 50%-of-text-color default; in the base layer so utilities still win. */
+@layer base {
+  ::placeholder {
+    color: var(--color-subtle);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

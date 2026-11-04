@@ -1,9 +1,10 @@
 import { FeatureCard } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { SvgIconComponent } from "@mui/icons-material";
 import { cn } from "@/lib/cn";
 
-export type Feature = { title: string; description: React.ReactNode };
+export type Feature = { title: string; description: React.ReactNode; icon?: SvgIconComponent };
 
 type FeatureGridProps = {
   title: string;
@@ -23,7 +24,7 @@ export function FeatureGrid({ title, features, tone, columns = 2 }: FeatureGridP
         )}
       >
         {features.map((f) => (
-          <FeatureCard key={f.title} title={f.title} className={tone === "surface" ? "bg-transparent" : undefined}>
+          <FeatureCard key={f.title} title={f.title} icon={f.icon} className={tone === "surface" ? "bg-transparent" : undefined}>
             {f.description}
           </FeatureCard>
         ))}

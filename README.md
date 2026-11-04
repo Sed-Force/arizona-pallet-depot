@@ -5,7 +5,7 @@ Next.js rebuild of the static `arizona-pallet-depot` site — App Router, TypeSc
 ## Getting started
 
 ```bash
-cp .env.example .env.local   # then set NEXT_PUBLIC_PAYPAL_CLIENT_ID
+cp .env.example .env.local   # then fill in the NEXT_PUBLIC_* values
 npm install
 npm run dev
 ```
@@ -14,13 +14,13 @@ npm run dev
 
 ```
 src/
-  app/                    Routes: /, /about, /calculator, /blog, /blog/[slug], /thanks, sitemap, robots
+  app/                    Routes: /, /about, /checkout, /blog, /blog/[slug], /thanks, sitemap, robots
   components/
     layout/               Global Navbar, Footer, MobileActionBar (rendered once in app/layout.tsx)
     ui/                   Primitives: Button/ButtonLink, Card, Container, Section, SectionHeading, Logo, JsonLd
     sections/             Page sections: Hero, FeatureGrid, PricingCards, ServiceArea, FaqList, QuoteForm, CtaPanel
     blog/                 PostCard, BlogBrowser (search + category filter), Prose
-    calculator/           PalletCalculator (client component with PayPal checkout)
+    calculator/           PalletCalculator + order form; pay in cash on arrival or by Zelle
   content/posts.ts        Blog post metadata + registry; post bodies live in content/posts/*.tsx
   lib/site.ts             Business details, nav items, products, FAQs — edit here, not in pages
   lib/schema.ts           JSON-LD structured data
@@ -52,7 +52,6 @@ Icons inherit the surrounding text color. MUI's styles are emitted into a CSS `@
 
 ## Before launch
 
-- Set the real Formspree ID in `site.quoteFormAction` (`src/lib/site.ts`) — it's still the `yourFormID` placeholder from the original site.
-- Set `NEXT_PUBLIC_PAYPAL_CLIENT_ID` in the hosting environment.
+- Set the `NEXT_PUBLIC_*` values from `.env.example` in the hosting environment.
 
 Old URLs (`/about.html`, `/calculator.html`, `/pallet-N.jpg`, …) permanently redirect to their new paths (`next.config.ts`).

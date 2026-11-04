@@ -19,7 +19,7 @@ const sizes: Record<Size, string> = {
 
 export function buttonClasses(variant: Variant = "primary", size: Size = "lg", className?: string) {
   return cn(
-    "inline-flex items-center justify-center text-center font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50",
+    "inline-flex items-center justify-center text-center font-semibold transition-colors hover:cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

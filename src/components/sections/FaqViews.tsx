@@ -25,15 +25,21 @@ export function FaqAccordions({ faqs, className }: { faqs: Faq[]; className?: st
         <Disclosure
           key={faq.question}
           as="div"
-          className="rounded-xl border border-border bg-surface transition-colors data-open:border-primary/40"
+          className="rounded-xl border border-border bg-surface transition-colors"
         >
           <DisclosureButton className="group flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-            <h3 className="group-data-open:text-link">{faq.question}</h3>
-            <ExpandMoreIcon className="shrink-0 text-muted transition-transform duration-200 group-data-open:rotate-180 group-data-open:text-link" />
+            <h3>
+              {faq.question}
+            </h3>
+            
+            <div className="bg-transparent group-data-open:bg-primary-hover rounded-md p-2 transform-duration-200"> 
+              <ExpandMoreIcon className="shrink-0 text-on-primary transition-transform duration-200 group-data-open:rotate-180 transform duration-300"/>
+            </div>
           </DisclosureButton>
+
           <DisclosurePanel
             transition
-            className="origin-top px-5 pb-5 text-body transition duration-200 ease-out data-closed:-translate-y-1 data-closed:opacity-0"
+            className="origin-top px-5 pb-5 text-body transition duration-200 ease-out border-border bg-surface-3 pt-4 data-open:border-t-2 data-closed:-translate-y-1 data-closed:opacity-0"
           >
             {faq.answer}
           </DisclosurePanel>
@@ -51,18 +57,18 @@ export function FaqTabs({ faqs, className }: { faqs: Faq[]; className?: string }
         {faqs.map((faq) => (
           <Tab
             key={faq.question}
-            className="rounded-lg border-l-4 border-transparent px-4 py-3 text-left font-semibold text-foreground-2 transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary data-selected:border-primary data-selected:bg-primary-soft data-selected:text-link"
+            className="rounded-lg px-4 py-3 text-left font-semibold text-foreground bg-surface border border-border transition-colors hover:cursor-pointer hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary data-selected:bg-primary data-selected:text-on-primary data-selected:hover:bg-primary-hover"
           >
             {faq.question}
           </Tab>
         ))}
       </TabList>
 
-      <TabPanels className="flex-1">
+      <TabPanels className="flex-1 flex">
         {faqs.map((faq) => (
           <TabPanel
             key={faq.question}
-            className="rounded-xl border border-border bg-surface p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="flex-1 rounded-xl border border-border bg-surface-2 p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             <h3 className="text-lg font-semibold">{faq.question}</h3>
             <p className="mt-3 text-body">{faq.answer}</p>

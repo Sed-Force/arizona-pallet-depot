@@ -10,7 +10,7 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
       {/* Both views render; CSS shows one per breakpoint. Choosing in JS (useMediaQuery) would
           make server and client markup differ and cause a hydration mismatch. */}
       <FaqAccordions faqs={faqs} className="mt-6 md:hidden" />
-      <FaqTabs faqs={faqs} className="mt-6 hidden items-start gap-8 md:flex" />
+      <FaqTabs faqs={faqs} className="mt-6 hidden gap-8 md:flex" />
     </Section>
   );
 }

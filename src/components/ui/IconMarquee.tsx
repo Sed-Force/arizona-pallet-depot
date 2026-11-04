@@ -48,7 +48,7 @@ export function IconMarquee({ items, reverse = false, className }: IconMarqueePr
       </ul>
 
       {/* The blue band: a full-width strip behind the label row only, so icons stand above it. */}
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-11 bg-primary" />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-11 bg-inverse" />
 
       {/* Two identical halves; animate-marquee shifts the track by exactly one half per loop.
           Per-item padding (not flex gap) keeps both halves the same length and each icon
@@ -63,8 +63,8 @@ export function IconMarquee({ items, reverse = false, className }: IconMarqueePr
       >
         {[...half, ...half].map(({ label, Icon }, i) => (
           <span key={i} className="flex w-fit shrink-0 flex-col items-center px-8">
-            <Icon fontSize="inherit" className="mb-1 text-6xl text-primary" />
-            <span className="flex h-11 items-center text-sm font-semibold whitespace-nowrap text-on-primary">
+            <Icon fontSize="inherit" className="mb-1 text-6xl text-inverse" />
+            <span className="flex h-11 items-center text-sm font-semibold whitespace-nowrap text-background">
               {label}
             </span>
           </span>

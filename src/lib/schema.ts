@@ -8,7 +8,7 @@ export const localBusinessSchema = {
       name: site.name,
       url: `${site.url}/`,
       email: `mailto:${site.email}`,
-      telephone: "+1-602-644-0600",
+      telephone: site.phone.e164,
       areaServed: ["Phoenix", "Gilbert", "Mesa", "Chandler", "San Tan Valley", "Scottsdale"].map((name) => ({
         "@type": "City",
         name,

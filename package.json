@@ -16,7 +16,6 @@
     "@mui/icons-material": "^9.5.0",
     "@mui/material": "^9.5.0",
     "@mui/material-nextjs": "^9.5.0",
-    "@paypal/react-paypal-js": "^10.6.1",
     "next": "16.4.4",
     "react": "19.3.0",
     "react-dom": "19.3.0"

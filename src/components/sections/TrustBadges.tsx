@@ -2,9 +2,9 @@ import PalletIcon from "@mui/icons-material/Pallet";
 import { IconMarquee, type MarqueeItem } from "@/components/ui/IconMarquee";
 
 const badges: MarqueeItem[] = [
-  { label: "Same-day options", Icon: PalletIcon },
-  { label: "Bulk discounts", Icon: PalletIcon },
-  { label: "Valley-wide delivery", Icon: PalletIcon },
+  { label: "Same-Day Service", Icon: PalletIcon },
+  { label: "Bulk Discounts", Icon: PalletIcon },
+  { label: "Valley-Wide Delivery", Icon: PalletIcon },
 ];
 
 /** Scrolling badge strip for Hero's `footer` slot. */

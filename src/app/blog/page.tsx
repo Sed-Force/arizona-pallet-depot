@@ -26,8 +26,9 @@ export default function BlogIndexPage() {
       />
 
       <Hero
-        eyebrow="Resources • Phoenix & East Valley"
-        title="Blog"
+        half
+        eyebrow="Articles & Insights"
+        title="Resource Blog"
         description={
           <p>
             Practical guides for buying and using pallets in Phoenix. Learn about pricing, delivery, vehicle capacity,
@@ -35,8 +36,8 @@ export default function BlogIndexPage() {
           </p>
         }
         actions={[
-          { label: "Get a Quote", href: links.quote },
-          { label: `Call ${site.phone.display}`, href: links.tel, variant: "secondary" },
+          { label: "Get a Quote", href: links.quote, variant: "secondary" },
+          { label: `Call Now`, href: links.tel },
         ]}
         image={{ src: "/images/pallet-4.jpg", alt: "Used 48x40 composite pallets in Phoenix, AZ" }}
       />
@@ -46,8 +47,8 @@ export default function BlogIndexPage() {
       </Container>
 
       <CtaPanel
-        title="Have a question about pallets in Phoenix?"
-        description="Tell us your quantity and timing—our team will confirm availability, pickup or delivery options, and pricing."
+        title="Questions About Pallets?"
+        description="Our team has answers. Give us a call or get a quote today."
         image={{ src: "/images/pallet-6.jpg", alt: "Industrial grade pallets in Phoenix" }}
       />
     </>

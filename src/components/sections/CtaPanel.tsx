@@ -18,8 +18,8 @@ export function CtaPanel({ title, description, image }: CtaPanelProps) {
           <h2 className="text-xl font-semibold md:text-2xl">{title}</h2>
           <p className="mt-2 text-body">{description}</p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href={links.quote} size="md">Request a Quote</ButtonLink>
-            <ButtonLink href={links.tel} size="md" variant="secondary">Call {site.phone.display}</ButtonLink>
+            <ButtonLink href={links.quote} size="md" variant="secondary">Get a Quote</ButtonLink>
+            <ButtonLink href={links.tel} size="md">Call Now</ButtonLink>
           </div>
         </div>
         {image && (

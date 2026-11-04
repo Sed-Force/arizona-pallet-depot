@@ -10,6 +10,11 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { faqSchema, localBusinessSchema } from "@/lib/schema";
 import { faqs, links } from "@/lib/site";
 
+import Discount from "@mui/icons-material/Discount";
+import LocalShipping from "@mui/icons-material/LocalShipping";
+import Forklift from "@mui/icons-material/Forklift";
+import Schedule from "@mui/icons-material/Schedule";
+
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/", title: "Used 48×40 Pallets in Phoenix & Gilbert, AZ | Arizona Pallet Depot" },
@@ -22,15 +27,18 @@ export default function HomePage() {
       <JsonLd data={faqSchema} />
 
       <Hero
-        title="Phoenix Plastic Pallets Fast Delivery or Pickup"
+        eyebrow="Fast Pickup & Delivery"
+        title="Plastic Pallets in Phoenix"
         description={
-          <p>
-            Used plastic 48×40 GMA pallets. <strong>Starting at $15.00 per unit</strong>. Bulk discounts may apply.
-            Pickup preferred; delivery/shipping available for a fee (call).
-          </p>
+          <ul className="list-disc pl-5 gap-2 flex flex-col">
+            <li>Used plastic 48×40 GMA pallets</li>
+            <li>Bulk discounts may apply</li>
+            <li>Pickup & Delivery available</li> 
+            <li><strong>Starting at $15.00 per unit</strong></li>
+          </ul>
         }
         actions={[
-          { label: "Request Bulk Pricing", href: links.quote, variant: "secondary" },
+          { label: "Get a Quote", href: links.quote, variant: "secondary" },
           { label: "Text Us", href: links.sms, variant: "secondary" },
           { label: "Call Now", href: links.tel },
         ]}
@@ -38,7 +46,7 @@ export default function HomePage() {
         footer={<TrustBadges />}
       />
 
-      <FeatureGrid
+      {/* <FeatureGrid
         title="What We Carry"
         features={[
           {
@@ -50,22 +58,22 @@ export default function HomePage() {
             description: "Designed to interlock easily — stack them high without shifting.",
           },
         ]}
-      />
+      /> */}
 
       <FeatureGrid
-        title="Why Choose Us"
+        title="Why Choose Us?"
         tone="surface"
         columns={4}
         features={[
-          { title: "Same-Day Options", description: "Need pallets today? We’ll do our best." },
-          { title: "Bulk Pricing", description: "Save more at higher quantities." },
-          { title: "Pallet Pickup in Gilbert", description: "By appointment only." },
-          { title: "Valley-Wide Pallet Delivery", description: "Phoenix metro coverage." },
+          { title: "Same-Day Service", description: "We'll do our best to get you your pallets today.", icon: Schedule },
+          { title: "Bulk Pricing", description: "Higher quantities equal bigger savings.", icon: Discount },
+          { title: "Pallet Pickup", description: "By appointment only in Gilbert.", icon: Forklift },
+          { title: "Valley-Wide Delivery", description: "We deliver to the entire Phoenix metro area.", icon: LocalShipping },
         ]}
       />
 
       <PricingCards />
-      <ServiceArea />
+      <ServiceArea note="Same day pickup & delivery available throughout the entire valley. Reach out to schedule your order!" />
       <FaqList faqs={faqs} />
       <QuoteForm />
     </>
