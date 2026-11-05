@@ -24,6 +24,8 @@ type IconMarqueeProps = {
   items: MarqueeItem[];
   /** Scroll left-to-right instead of right-to-left. */
   reverse?: boolean;
+  /** Text-color class for the icons, e.g. "text-black" for icons that stay the same in light and dark mode. */
+  iconColor?: string;
   className?: string;
 };
 
@@ -31,7 +33,7 @@ type IconMarqueeProps = {
  * Full-width, endlessly scrolling strip of icon-over-label items on a primary-blue band.
  * Screen readers get the plain list; the moving strip is decorative.
  */
-export function IconMarquee({ items, reverse = false, className }: IconMarqueeProps) {
+export function IconMarquee({ items, reverse = false, iconColor = "text-inverse", className }: IconMarqueeProps) {
   const setWidth = estimateWidth(items);
   const copies = Math.ceil(MIN_HALF_PX / setWidth);
   const half = Array.from({ length: copies }, () => items).flat();
@@ -63,7 +65,7 @@ export function IconMarquee({ items, reverse = false, className }: IconMarqueePr
       >
         {[...half, ...half].map(({ label, Icon }, i) => (
           <span key={i} className="flex w-fit shrink-0 flex-col items-center px-8">
-            <Icon fontSize="inherit" className="mb-1 text-6xl text-inverse" />
+            <Icon fontSize="inherit" className={cn("mb-1 text-6xl", iconColor)} />
             <span className="flex h-11 items-center text-sm font-semibold whitespace-nowrap text-background">
               {label}
             </span>

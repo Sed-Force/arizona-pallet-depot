@@ -47,6 +47,12 @@ export const site = {
     "Queen Creek",
     "Glendale",
     "Peoria",
+    "Casa Grande",
+    "Fountain Hills",
+    "Maricopa",
+    "San Tan Valley",
+    "Florence",
+    "Goodyear",
   ],
 } as const;
 
